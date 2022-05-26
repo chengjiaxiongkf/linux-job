@@ -16,7 +16,7 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.28.2/docker-
 # 部署中间件
 clone此项目,在各中间件目录下执行 docker-compose up -d
 
-##Q&A:
+## Q&A:
 #### 1.域名解析
 vmware环境，宿主机C:\Windows\System32\drivers\etc\hosts 追加域名解析xxx.xxx.xxx.xx project.com即可指向nginx的80端口<br/>
 <br/>云服务器环境,需要dnspopd之类的域名解析指向到云linux的nginx80端口，nginx需要加域名配置、证书配置、ssl配置
