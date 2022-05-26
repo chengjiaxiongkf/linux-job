@@ -1,7 +1,9 @@
 # 在linux中快速部署各中间件环境
 前言，离职后没有公司的中间件使用，很多项目代码跑不起来了，快速集成部署一套开发环境用于项目代码使用，我是在自己电脑使用的VMware，有条件的可以使用自己的云服务器。
-<br/>VMware配置:<br/>cpu:8逻辑处理核<br/>内存:8G<br/>网络:NAT模式
-<br/>![image](https://raw.githubusercontent.com/chengjiaxiongkf/linux-job/master/img/all.jpg)
+<br/><br/>VMware配置:<br/>cpu:8逻辑处理核<br/>内存:8G<br/>网络:NAT模式
+<br/><br/> 
+#### [演示图]
+![image](https://raw.githubusercontent.com/chengjiaxiongkf/linux-job/master/img/all.jpg)
 # 安装前置(不需要可以跳过)
 sudo yum update
 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
