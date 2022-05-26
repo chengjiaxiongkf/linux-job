@@ -3,15 +3,13 @@ services:
   nacos:
     image: nacos/nacos-server:latest
     container_name: nacos
-    env_file:
-      - ./env/nacos-standlone-mysql.env
     networks:
       - vlan-nacos
       - vlan-mysql
     volumes:
       - /data/volumes/nacos/logs/:/home/nacos/logs
       - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
-      # - ./conf/application.properties:/home/nacos/conf/application.properties:ro
+      - ./init.d/application.properties:/home/nacos/conf/application.properties
     ports:
       - "8848:8848"
       - "9848:9848"
