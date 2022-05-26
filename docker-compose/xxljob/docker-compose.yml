@@ -2,7 +2,7 @@ version: "3"
 # 构建服务
 services:
   # 第一个服务拉去jar包
-  blade-xxljob:
+  blade-xxljob-admin:
     # 刚刚打包的镜像
     image: blade-xxljob-admin:latest
     environment:
@@ -12,4 +12,4 @@ services:
       - "7009:7009"
     #volumes:
       # 本地文件:映射容器文件
-      #- "./volumes/data:../data"
+      - "./volumes/data:/blade/data/applogs/xxl-job"
