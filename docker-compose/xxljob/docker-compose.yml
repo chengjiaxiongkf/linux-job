@@ -7,7 +7,6 @@ services:
     image: blade-xxljob-admin:latest
     ports:
       - "7009:7009"
-    volumes:
+    #volumes:
       # 本地文件:映射容器文件
-      - "./wait-for-it.sh:/wait-for-it.sh"
-      - "./volumes/data:../data"
+      #- "./volumes/data:../data"
