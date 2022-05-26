@@ -1,0 +1,14 @@
+version: "3"
+services:
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - ./volumes/redis:/data
+    command:
+      # 执行的命令
+      redis-server --appendonly yes
+      # redis-server --requirepass 123456 --appendonly yes
+    restart: always
