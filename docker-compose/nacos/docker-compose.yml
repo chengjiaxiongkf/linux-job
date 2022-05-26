@@ -7,9 +7,9 @@ services:
       - vlan-nacos
       - vlan-mysql
     volumes:
-      - /data/volumes/nacos/logs/:/home/nacos/logs
-      - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
-      - ./init.d/application.properties:/home/nacos/conf/application.properties
+      - ./volumes/nacos/logs/:/home/nacos/logs
+      - ./volumes/conf/custom.properties:/home/nacos/init.d/custom.properties
+      - ./volumes/conf/application.properties:/home/nacos/conf/application.properties
     ports:
       - "8848:8848"
       - "9848:9848"
