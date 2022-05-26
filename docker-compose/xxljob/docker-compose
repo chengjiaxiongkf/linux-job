@@ -4,7 +4,7 @@ services:
   # 第一个服务拉去jar包
   blade-xxljob:
     # 刚刚打包的镜像
-    image: blade-xxljob
+    image: blade-xxljob:latest
     ports:
       - "7009:7009"
     volumes:
