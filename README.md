@@ -3,7 +3,7 @@
 <br/><br/>VMware配置:<br/>cpu:8逻辑处理核<br/>内存:8G<br/>网络:NAT模式
 <br/><br/> 
 #### [演示图]
-![image](https://cjxhss.com/download/all.jpg)
+![image](https://raw.githubusercontent.com/chengjiaxiongkf/linux-job/master/img/all.jpg)
 # 安装前置(不需要可以跳过)
 sudo yum update
 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
