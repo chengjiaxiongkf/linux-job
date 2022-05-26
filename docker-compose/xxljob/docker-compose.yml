@@ -5,6 +5,9 @@ services:
   blade-xxljob:
     # 刚刚打包的镜像
     image: blade-xxljob-admin:latest
+    environment:
+      - TZ=Asia/Shanghai
+      - JAVA_OPTS=-XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=128m -Xms1024m -Xmx1024m -Xmn256m -Xss256k -Dspring.cloud.nacos.discovery.server-addr=192.168.152.128:8848 -Dspring.cloud.nacos.config.server-addr=192.168.152.128:8848 -Dspring.cloud.nacos.config.namespace=0189e68b-f0d6-4879-a568-a303a42648d2 -Dspring.cloud.nacos.discovery.namespace=0189e68b-f0d6-4879-a568-a303a42648d2
     ports:
       - "7009:7009"
     #volumes:
