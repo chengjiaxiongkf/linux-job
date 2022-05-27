@@ -16,7 +16,7 @@ sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/cen
 sudo curl -L "https://github.com/docker/compose/releases/download/1.28.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 # 部署中间件
-clone此项目,在各中间件目录下执行 docker-compose up -d
+clone此项目,在各中间件目录下执行 "docker-compose up -d"
 
 ## Q&A:
 #### 1.域名解析
@@ -25,4 +25,5 @@ vmware环境，宿主机C:\Windows\System32\drivers\etc\hosts 追加域名解析
 #### 2.nacos部署
 需要先安装mysql，在同docker同network内情况，配置可以用[mysql8]容器名连接的
 #### 3.xxljob部署
-此xxljob是集成了nacos注册的
+此xxljob是集成了nacos注册的,在执行"docker-compose up -d" 之前需要先在/docker-compose/xxljob/images 目录下执行"docker build -t 容器名 ."
+<br/>作用是把jar包打包到docker本地镜像仓库（docker images）
