@@ -16,5 +16,5 @@ ENV JAVA_OPTS="-Xmx512m -Xms512m -Xss512k"
 ENV AGENT_PATH="/java/skywalking/skywalking-agent.jar"
 ENV AGENT_SERVICES="192.168.152.128:1180"
 
-CMD java ${JAVA_OPTS} -Dspring.profiles.active=${ENV} -Dserver.port=19999 -Djava.security.egd=file:/dev/./urandom -javaagent:${AGENT_PATH} -Dskywalking.collector.backend_service=${AGENT_SERVICES} -Dskywalking.agent.service_name=${JAVA_NAME} -jar ${JAVA_NAME}.jar
+CMD java ${JAVA_OPTS} -Dspring.profiles.active=${ENV} -Dserver.port=19999 -Djava.security.egd=file:/dev/./urandom -javaagent:${AGENT_PATH} -Dagent.cluster=${AGENT_SERVICES} -Dagent.service_name=${JAVA_NAME} -jar ${JAVA_NAME}.jar
 #ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "app.jar"]
