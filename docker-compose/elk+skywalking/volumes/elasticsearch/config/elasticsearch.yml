@@ -1,0 +1,4 @@
+network.host: 0.0.0.0  #使用的网络
+http.cors.enabled: true #跨域配置
+http.cors.allow-origin: "*"
+xpack.security.enabled: true  #开启密码配置
