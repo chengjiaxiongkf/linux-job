@@ -27,3 +27,13 @@ vmware环境，宿主机C:\Windows\System32\drivers\etc\hosts 追加域名解析
 #### 3.xxljob部署
 此xxljob是集成了nacos注册的,在执行"docker-compose up -d" 之前需要先在/docker-compose/xxljob/images 目录下执行"docker build -t 容器名 ."
 <br/>作用是把jar包打包到docker本地镜像仓库（docker images）
+#### 4.elk+skywalking部署
+1). elasticsearch挂载的data目录要手动创建，并且给执行/写入权限 chmod 777 [目录]<br/>
+2). elasticsearch部署完毕后需要进入容器初始化账号密码，初始化之后重启容器
+
+    docker exec -it elk_elasticsearch /bin/bash #进入ES容器内部
+    cd bin
+    elasticsearch-setup-passwords interactive #执行 设置六个账号密码
+
+3). logstash挂载的./volumes/logstash/conf 里面需要修改成对应elasticsearch的elastic账号的密码
+4). logstash部署完毕后需要进入容器修改elastic账号密码，初始化之后重启容器
