@@ -35,13 +35,5 @@ vmware环境，宿主机C:\Windows\System32\drivers\etc\hosts 追加域名解析
     cd bin
     elasticsearch-setup-passwords interactive #执行 设置六个账号密码
 
-3). logstash挂载的./volumes/logstash/conf 里面需要修改成对应elasticsearch的elastic账号的密码
-4). kibana部署完毕后需要进入容器修改elastic账号密码，初始化之后重启容器
-    
-    docker exec -it elk_kibana /bin/bash # 进入容器内部
-    cd config #进入配置文件夹 因为在启动的时候没有进行文件挂载需要进入到容器内部进行汉化
-    vi kibana.yml
-        i18n.locale: "zh-CN"  #汉化
-        # 此处设置elastic的用户名和密码
-        elasticsearch.username: elastic
-        elasticsearch.password: elastic
+3). logstash挂载的./volumes/logstash/conf 里面需要修改成对应elasticsearch的elastic账号的密码(我密码统一设的admin123)<br/>
+4). kibana挂载的./volumes/logstash/conf 里面需要修改成对应elasticsearch的elastic账号的密码(我密码统一设的admin123)<br/>
