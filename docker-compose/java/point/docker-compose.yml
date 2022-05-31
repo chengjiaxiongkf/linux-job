@@ -12,4 +12,5 @@ services:
       - "7009:7009"
     volumes:
       # 本地文件:映射容器文件
-      - "./log:/data/logs/point/"
+      - "/data/logs/point:/java/log"
+      - "/data/linux-job/linux-job/docker-compose/skywalking:/java/skywalking"
