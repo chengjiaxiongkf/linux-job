@@ -8,7 +8,7 @@ WORKDIR /java
 
 EXPOSE 19999
 
-ADD point.jar ./app.jar
+ADD point.jar ./point.jar
 
 ENV ENV="prod"
 ENV JAVA_NAME="point"
