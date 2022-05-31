@@ -55,7 +55,7 @@ services:
       SW_STORAGE: elasticsearch
       SW_STORAGE_ES_CLUSTER_NODES: es:9200
       SW_ES_USER: elastic #es的账号
-      SW_ES_USER_PASSWORD: admin123 #es的密码
+      SW_ES_PASSWORD: admin123 #es的密码
   ui:
     image: apache/skywalking-ui:6.4.0
     container_name: skywalking-ui
