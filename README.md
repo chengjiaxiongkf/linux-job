@@ -35,5 +35,5 @@ vmware环境，宿主机C:\Windows\System32\drivers\etc\hosts 追加域名解析
     cd bin
     elasticsearch-setup-passwords interactive #执行 设置六个账号密码
 
-3). logstash挂载的./volumes/logstash/conf 里面需要修改成对应elasticsearch的elastic账号的密码(我密码统一设的admin123)<br/>
-4). kibana挂载的./volumes/logstash/conf 里面需要修改成对应elasticsearch的elastic账号的密码(我密码统一设的admin123)<br/>
+3). logstash挂载的./volumes/logstash/conf 里面的两个文件中的user/password需要修改成对应elasticsearch的elastic账号的密码(es密码默认设的admin123)<br/>
+4). kibana挂载的./volumes/logstash/conf 里面需要修改成对应elasticsearch的elastic账号的密码(es密码默认设的admin123)<br/>
