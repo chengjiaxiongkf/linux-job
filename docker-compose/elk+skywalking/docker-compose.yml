@@ -23,6 +23,8 @@ services:
       - elasticsearch #kibana在elasticsearch启动之后再启动
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch:9200 #设置访问elasticsearch的地址
+    volumes:
+      - ./volumes/kibana/conf/kibana.yml:/usr/share/kibana/config/kibana.yml
     ports:
       - 5601:5601
   logstash:
