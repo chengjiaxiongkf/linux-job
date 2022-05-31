@@ -40,7 +40,7 @@ services:
     ports:
       - 4560:4560
   oap:
-    image: apache/skywalking-oap-server:6.4.0
+    image: apache/skywalking-oap-server:7.0.0
     container_name: skywalking-oap
     depends_on:
       - elasticsearch
@@ -57,7 +57,7 @@ services:
       SW_ES_USER: elastic #es的账号
       SW_ES_PASSWORD: admin123 #es的密码
   ui:
-    image: apache/skywalking-ui:6.4.0
+    image: apache/skywalking-ui:7.0.0
     container_name: skywalking-ui
     depends_on:
       - oap
