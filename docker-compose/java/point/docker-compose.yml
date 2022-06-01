@@ -3,8 +3,6 @@ version: "3"
 services:
   # 第一个服务拉去jar包
   point:
-    # 刚刚打包的镜像
-    build: point.jar
     image: point:latest
     container_name: point
     environment:
