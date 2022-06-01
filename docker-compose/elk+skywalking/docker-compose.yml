@@ -50,6 +50,8 @@ services:
       - /data/logs/point/all/:/logs/point/
     depends_on:
       - logstash
+    ports:
+      - 4560:4560
   oap:
     image: apache/skywalking-oap-server:6.6.0-es7
     container_name: skywalking-oap
