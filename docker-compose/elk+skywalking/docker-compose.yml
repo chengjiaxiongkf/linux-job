@@ -36,7 +36,6 @@ services:
       - ./volumes/logstash/conf/logstash.yml:/usr/share/logstash/config/logstash.yml #挂载logstash的配置文件
     depends_on:
       - elasticsearch #logstash在elasticsearch启动之后再启动
-      - filebeat #logstash在filebeat启动之后再启动
     links:
       - elasticsearch:es #可以用es这个域名访问elasticsearch服务
     ports:
