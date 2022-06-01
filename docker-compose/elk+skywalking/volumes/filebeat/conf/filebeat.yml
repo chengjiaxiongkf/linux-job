@@ -1,0 +1,11 @@
+filebeat.inputs:
+- type: log
+  fields:
+    type: "filebeat"
+  paths:
+    - /filebeat/**/*.log    # /filebeat为docker-compose映射路径
+# output.elasticsearch:
+#   hosts: ["127.0.0.0:9200"]
+#   index: "merit_test_log-%{+yyyy.MM.dd}"
+output.logstash: #日志内容输出到logstash
+  hosts: ["127.0.0.0:4560"]

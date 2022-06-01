@@ -18,7 +18,7 @@ services:
   kibana:
     image: kibana:7.7.0
     container_name: kibana
-    restart: always
+    # restart: always
     depends_on:
       - elasticsearch #kibana在elasticsearch启动之后再启动
     environment:
@@ -30,16 +30,27 @@ services:
   logstash:
     image: logstash:7.7.0
     container_name: logstash
-    restart: always
+    # restart: always
     volumes:
       - ./volumes/logstash/conf/logstash-springboot.conf:/usr/share/logstash/pipeline/logstash.conf #挂载logstash的配置文件
       - ./volumes/logstash/conf/logstash.yml:/usr/share/logstash/config/logstash.yml #挂载logstash的配置文件
     depends_on:
-      - elasticsearch #kibana在elasticsearch启动之后再启动
+      - elasticsearch #logstash在elasticsearch启动之后再启动
+      - filebeat #logstash在filebeat启动之后再启动
     links:
       - elasticsearch:es #可以用es这个域名访问elasticsearch服务
     ports:
       - 4560:4560
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:7.7.0
+    container_name: filebeat
+    hostname: filebeat
+    # restart: always
+    volumes:
+      - ./volumes/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - /data/logs/:/filebeat
+    depends_on:
+      - logstash
   oap:
     image: apache/skywalking-oap-server:6.6.0-es7
     container_name: skywalking-oap
@@ -47,7 +58,7 @@ services:
       - elasticsearch
     links:
       - elasticsearch:es
-    restart: always
+    # restart: always
     ports:
       - 11800:11800
       - 12800:12800
@@ -64,7 +75,7 @@ services:
       - oap
     links:
       - oap
-    restart: always
+    # restart: always
     ports:
       - 8080:8080
     environment:
