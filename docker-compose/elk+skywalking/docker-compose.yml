@@ -46,8 +46,8 @@ services:
     hostname: filebeat
     # restart: always
     volumes:
-      - ./volumes/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
-      - /data/logs/java:/logs/point/
+      - ./volumes/filebeat/conf/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - /data/logs/point/all/:/logs/point/
     depends_on:
       - logstash
   oap:
