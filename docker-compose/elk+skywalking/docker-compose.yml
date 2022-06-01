@@ -51,9 +51,9 @@ services:
     depends_on:
       - logstash
     ports:
-      - 4560:4560
+      - 5044:5044
   oap:
-    image: apache/skywalking-oap-server:6.6.0-es7
+    image: apache/skywalking-oap-server:8.10.0
     container_name: skywalking-oap
     depends_on:
       - elasticsearch
@@ -70,7 +70,7 @@ services:
       SW_ES_USER: elastic #es的账号
       SW_ES_PASSWORD: admin123 #es的密码
   ui:
-    image: apache/skywalking-ui:6.6.0
+    image: apache/skywalking-ui:8.10.0
     container_name: skywalking-ui
     depends_on:
       - oap
