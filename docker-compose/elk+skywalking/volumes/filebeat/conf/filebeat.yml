@@ -1,4 +1,4 @@
-filebeat.prospectors:
+filebeat.inputs:
   # 一台机器上部署多个应用服务，1个filebeat收集这些应用服务的日志
   # type对应一个应用服务，并填写 `fields.source`来标识是哪个服务
   - type: log
