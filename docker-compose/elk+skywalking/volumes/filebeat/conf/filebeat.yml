@@ -9,7 +9,7 @@ filebeat.inputs:
     clean_inactive: 36h
     fields:  #定义的自定义字段，给logstash使用
       serviceName: point # 对应的应用名
-      host: ${serverIP} #所在ip
+      host: 192.168.152.128 #所在ip
 output.logstash:
   # The Logstash hosts
   hosts: ["logstash:4560"]
