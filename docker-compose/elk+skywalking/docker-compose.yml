@@ -84,3 +84,33 @@ services:
       TZ: Asia/Shanghai 
       SW_OAP_ADDRESS: oap:12800
       security.user.admin.password: admin123
+  skywalking-oap:
+    image: apache/skywalking-oap-server:8.9.1
+    container_name: skywalking-oap
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch
+    restart: always
+    ports:
+      - 11800:11800
+      - 12800:12800
+    environment:
+      SW_STORAGE: elasticsearch  # 指定ES版本
+      SW_STORAGE_ES_CLUSTER_NODES: elasticsearch:9200
+      TZ: Asia/Shanghai
+    volumes:
+     - ./volumes/skywalking/conf/alarm-settings.yml:/skywalking/config/alarm-settings.yml
+  skywalking-ui:
+    image: apache/skywalking-ui:8.9.1
+    container_name: skywalking-ui
+    depends_on:
+      - skywalking-oap
+    links:
+      - skywalking-oap
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      SW_OAP_ADDRESS: http://skywalking-oap:12800
+      TZ: Asia/Shanghai
