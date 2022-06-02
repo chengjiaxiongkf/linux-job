@@ -52,38 +52,38 @@ services:
       - logstash
     ports:
       - 5044:5044
-  oap:
-    image: apache/skywalking-oap-server:8.8.0
-    container_name: skywalking-oap
-    depends_on:
-      - elasticsearch
-    links:
-      - elasticsearch:es
-    # restart: always
-    ports:
-      - 1234:1234
-      - 11800:11800
-      - 12800:12800
-    environment:
-      TZ: Asia/Shanghai
-      SW_STORAGE: elasticsearch
-      SW_STORAGE_ES_CLUSTER_NODES: es:9200
-      SW_ES_USER: elastic #es的账号
-      SW_ES_PASSWORD: admin123 #es的密码
-  ui:
-    image: apache/skywalking-ui:8.8.0
-    container_name: skywalking-ui
-    depends_on:
-      - oap
-    links:
-      - oap
-    # restart: always
-    ports:
-      - 8080:8080
-    environment:
-      TZ: Asia/Shanghai 
-      SW_OAP_ADDRESS: oap:12800
-      security.user.admin.password: admin123
+  # oap:
+  #   image: apache/skywalking-oap-server:8.8.0
+  #   container_name: skywalking-oap
+  #   depends_on:
+  #     - elasticsearch
+  #   links:
+  #     - elasticsearch:es
+  #   # restart: always
+  #   ports:
+  #     - 1234:1234
+  #     - 11800:11800
+  #     - 12800:12800
+  #   environment:
+  #     TZ: Asia/Shanghai
+  #     SW_STORAGE: elasticsearch
+  #     SW_STORAGE_ES_CLUSTER_NODES: es:9200
+  #     SW_ES_USER: elastic #es的账号
+  #     SW_ES_PASSWORD: admin123 #es的密码
+  # ui:
+  #   image: apache/skywalking-ui:8.8.0
+  #   container_name: skywalking-ui
+  #   depends_on:
+  #     - oap
+  #   links:
+  #     - oap
+  #   # restart: always
+  #   ports:
+  #     - 8080:8080
+  #   environment:
+  #     TZ: Asia/Shanghai 
+  #     SW_OAP_ADDRESS: oap:12800
+  #     security.user.admin.password: admin123
   skywalking-oap:
     image: apache/skywalking-oap-server:8.9.1
     container_name: skywalking-oap
