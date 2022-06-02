@@ -98,6 +98,8 @@ services:
     environment:
       SW_STORAGE: elasticsearch  # 指定ES版本
       SW_STORAGE_ES_CLUSTER_NODES: elasticsearch:9200
+      SW_ES_USER: elastic #es的账号
+      SW_ES_PASSWORD: admin123 #es的密码
       TZ: Asia/Shanghai
     volumes:
      - ./volumes/skywalking/conf/alarm-settings.yml:/skywalking/config/alarm-settings.yml
