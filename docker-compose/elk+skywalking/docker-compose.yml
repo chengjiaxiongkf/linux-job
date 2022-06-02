@@ -1,7 +1,7 @@
 version: '2'
 services:
   elasticsearch:
-    image: elasticsearch:7.7.0
+    image: elasticsearch:7.14.2
     container_name: elasticsearch
     restart: always
     ports:
@@ -13,7 +13,7 @@ services:
       TZ: Asia/Shanghai
       ES_JAVA_OPTS: -Xms512m -Xmx512m #设置使用jvm内存大小
     volumes:
-      - ./volumes/elasticsearch/plugins:/usr/share/elasticsearch/plugins #插件文件挂载
+      - ./volumes/elasticsearch/logs:/usr/share/elasticsearch/logs #日志文件挂载
       - ./volumes/elasticsearch/data:/usr/share/elasticsearch/data #数据文件挂载!!!需要创建目录并且授予写入执行权限 chmod 777 [目录]
       - ./volumes/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml #配置文件挂载
   kibana:
