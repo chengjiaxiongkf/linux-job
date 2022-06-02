@@ -8,6 +8,7 @@ services:
       - 9200:9200
       - 9300:9300
     environment:
+      TAKE_FILE_OWNERSHIP: true
       discovery.type: single-node
       TZ: Asia/Shanghai
       ES_JAVA_OPTS: -Xms512m -Xmx512m #设置使用jvm内存大小
@@ -53,7 +54,7 @@ services:
     ports:
       - 5044:5044
   skywalking-oap:
-    image: apache/skywalking-oap-server:7.0.0-es7
+    image: apache/skywalking-oap-server:8.9.1
     container_name: skywalking-oap
     depends_on:
       - elasticsearch
@@ -61,7 +62,6 @@ services:
       - elasticsearch:es
     # restart: always
     ports:
-      - 1234:1234
       - 11800:11800
       - 12800:12800
     environment:
@@ -70,8 +70,10 @@ services:
       SW_STORAGE_ES_CLUSTER_NODES: es:9200
       SW_ES_USER: elastic #es的账号
       SW_ES_PASSWORD: admin123 #es的密码
+    volumes:
+      - ./volumes/skywalking/conf/alarm-settings.yml:/skywalking/config/alarm-settings.yml
   skywalking-ui:
-    image: apache/skywalking-ui:7.0.0
+    image: apache/skywalking-ui:8.9.1
     container_name: skywalking-ui
     depends_on:
       - skywalking-oap
