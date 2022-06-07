@@ -54,7 +54,7 @@ services:
     ports:
       - 5044:5044
   skywalking-oap:
-    image: apache/skywalking-oap-server:8.8.0
+    image: apache/skywalking-oap-server:8.9.1
     container_name: skywalking-oap
     depends_on:
       - elasticsearch
@@ -73,7 +73,7 @@ services:
     volumes:
       - ./volumes/skywalking/conf/alarm-settings.yml:/skywalking/config/alarm-settings.yml
   skywalking-ui:
-    image: apache/skywalking-ui:8.8.0
+    image: apache/skywalking-ui:8.9.1
     container_name: skywalking-ui
     depends_on:
       - skywalking-oap
