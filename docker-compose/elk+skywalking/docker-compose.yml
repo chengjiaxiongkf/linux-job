@@ -66,7 +66,7 @@ services:
       - 12800:12800
     environment:
       TZ: Asia/Shanghai
-      SW_STORAGE: elasticsearch
+      SW_STORAGE: elasticsearch7
       SW_STORAGE_ES_CLUSTER_NODES: es:9200
       SW_ES_USER: elastic #es的账号
       SW_ES_PASSWORD: admin123 #es的密码
