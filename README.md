@@ -30,6 +30,9 @@ docker-compose version
 clone此项目,在各中间件目录下执行 "docker-compose up -d"
 
 ## Q&A:
+#### 设置linux时区
+timedatectl list-timezones  #列出所有时区
+timedatectl set-timezone Asia/Shanghai #修改为XX时区
 #### 1.docker镜像源
 echo '{
      "registry-mirrors": [
