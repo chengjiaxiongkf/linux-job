@@ -12,4 +12,4 @@ services:
     volumes:
       # 本地文件:映射容器文件
       - "/data/logs/point:/java/log"
-      - "/data/linux-job/linux-job/docker-compose/elk+skywalking/agent/:/java/skywalking"
+      - "/data/linux-job/docker-compose/elk+skywalking/agent/:/java/skywalking"
