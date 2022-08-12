@@ -33,7 +33,7 @@ clone此项目,在各中间件目录下执行 "docker-compose up -d"
 #### 设置linux时区
 timedatectl list-timezones  #列出所有时区
 timedatectl set-timezone Asia/Shanghai #修改为XX时区
-#### 1.docker镜像源
+#### docker镜像源
 echo '{
      "registry-mirrors": [
          "http://hub-mirror.c.163.com",
@@ -41,18 +41,22 @@ echo '{
          "https://registry.docker-cn.com"
      ]
 }' > /etc/docker/daemon.json
-#### 2.域名解析
+#### 域名解析
 vmware环境，宿主机C:\Windows\System32\drivers\etc\hosts 追加域名解析xxx.xxx.xxx.xx project.com即可指向nginx的80端口<br/>
 <br/>云服务器环境,需要dnspopd之类的域名解析指向到云linux的nginx80端口，nginx需要加域名配置、证书配置、ssl配置
 
-#### 3.nacos部署
-需要先安装mysql，在同docker同network内情况，配置可以用[mysql8]容器名连接的
+#### mysql部署
+<需要先 docker network create vlan-mysql （目的是为了跟其他容器映射，使其直接使用容器名内网访问）>
 
-#### 4.xxljob部署
+#### nacos部署
+<需要先安装mysql><需要先 docker network create vlan-nacos（目的是为了跟其他容器映射，使其直接使用容器名内网访问）>
+
+#### xxljob部署
 此xxljob是集成了nacos注册的,在执行"docker-compose up -d" 之前需要先在/docker-compose/xxljob/images 目录下执行"docker build -t 容器名 ."
 <br/>作用是把jar包打包到docker本地镜像仓库（docker images）
-#### 4.elk+skywalking部署
-1). elasticsearch挂载的data目录要手动创建，并且给执行/写入权限 chmod 777 [目录]<br/>
+
+#### elk+skywalking部署
+1). elasticsearch挂载的data目录要手动创建，并且给执行/写入权限 chmod a+rwx [目录]<br/>
 2). elasticsearch部署完毕后需要进入容器初始化账号密码，初始化之后重启容器
 
     docker exec -it elk_elasticsearch /bin/bash #进入ES容器内部
@@ -61,3 +65,6 @@ vmware环境，宿主机C:\Windows\System32\drivers\etc\hosts 追加域名解析
 
 3). logstash挂载的./volumes/logstash/conf 里面的两个文件中的user/password需要修改成对应elasticsearch的elastic账号的密码(es密码默认设的admin123)<br/>
 4). kibana挂载的./volumes/logstash/conf 里面需要修改成对应elasticsearch的elastic账号的密码(es密码默认设的admin123)<br/>
+
+#### grafana部署
+<需要先对volumn文件夹授权所有人读写权限 chmod a+rwx ./volumes/*>
