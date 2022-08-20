@@ -1,0 +1,15 @@
+version: "3"
+services:
+  redis:
+    image: redis
+    container_name: redis6380
+    ports:
+      - 6380:6380
+    volumes:
+      - ./volumes/redis:/data
+    command:
+      # 执行的命令
+      # redis-server --appendonly yes
+      # redis-server --requirepass 123456 --appendonly yes
+        redis-server --appendonly yes --port 6380
+    restart: always
