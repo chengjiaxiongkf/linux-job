@@ -43,7 +43,7 @@ echo '{
 }' > /etc/docker/daemon.json
 #### 域名解析
 vmware环境，宿主机C:\Windows\System32\drivers\etc\hosts 追加域名解析xxx.xxx.xxx.xx project.com即可指向nginx的80端口<br/>
-<br/>云服务器环境,需要dnspopd之类的域名解析指向到云linux的nginx80端口，nginx需要加域名配置、证书配置、ssl配置
+<br/>云服务器环境,需要dnspod之类的域名解析指向到云linux的nginx80端口，nginx需要加域名配置、证书配置、ssl配置
 
 #### mysql部署
 <需要先 docker network create vlan-mysql （目的是为了跟其他容器映射，使其直接使用容器名内网访问）>
