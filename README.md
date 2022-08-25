@@ -12,7 +12,7 @@ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/dock
 ##### 从阿里云下载(网络超时的话重试几遍或者换下载地址)
 sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 # 安装docker
-sudo yum install docker-ce
+sudo yum install docker
 # 开机启动docker
 sudo systemctl enable docker
 # 启动docker
