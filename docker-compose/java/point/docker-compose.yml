@@ -1,15 +1,31 @@
-version: "3"
-# 构建服务
+
+version: "3.3"
 services:
-  # 第一个服务拉去jar包
   point:
-    image: point:latest
+    build:
+      context: ./ #Dockerfile的目录
+   # network_mode: host
+    restart: always
     container_name: point
-    environment:
-      - TZ=Asia/Shanghai
+    image: point
+    #depends_on:
+    #  - mysql8
+    #links:
+    #  - mysql8
     ports:
-      - "19999:19999"
-    volumes:
-      # 本地文件:映射容器文件
-      - "/data/logs/point:/java/log"
-      - "/data/linux-job/docker-compose/elk+skywalking/agent/:/java/skywalking"
+      - 7100:7100
+    networks:
+      - vlan-nacos
+      - vlan-mysql
+      - vlan-redis
+    volumes: #如果上传文件保存在本地需要进行地址映射
+      - /data/logs/point:/java/log
+      - /data/tmp/point:/java/tmp
+    #  - ./config:/java/config  #springboot外部注入配置文件目录
+networks:
+  vlan-nacos:
+    external: true
+  vlan-mysql:
+    external: true
+  vlan-redis:
+    external: true
