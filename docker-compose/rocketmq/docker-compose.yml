@@ -42,9 +42,9 @@ services:
     container_name: rocketmq-console
     restart: always
     ports:
-      - 8180:8080
+      - 8180:8180
     environment:
-      JAVA_OPTS: "-Drocketmq.namesrv.addr=rocketmq-namesrv:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false"
+      JAVA_OPTS: "-Dserver.port=8180 -Drocketmq.namesrv.addr=rocketmq-namesrv:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false"
     depends_on:
       - rocketmq-namesrv
     networks:
