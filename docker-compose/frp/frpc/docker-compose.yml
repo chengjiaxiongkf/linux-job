@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+  frpc:
+    image: snowdreamtech/frpc
+    restart: always
+    container_name: frpc
+    network_mode: host #直接跟宿主机共用网络
+    privileged: true #容器内root等同于宿主机root
+    volumes:
+      - ./volumes/frpc.ini:/etc/frp/frpc.ini
+      - /etc/localtime:/etc/localtime:ro
