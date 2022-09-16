@@ -1,0 +1,36 @@
+version: "3.3"
+services:
+  cloudreve:
+    container_name: cloudreve
+    image: cloudreve/cloudreve:latest
+    restart: unless-stopped
+    networks:
+      - vlan-mysql
+      - vlan-redis
+    ports:
+      - "7100:7100"
+    volumes:
+      - ./volumes/cloudreve/data:/data
+      - ./volumes/cloudreve/uploads:/cloudreve/uploads
+      - ./volumes/cloudreve/conf.ini:/cloudreve/conf.ini
+      - ./volumes/cloudreve/cloudreve.db:/cloudreve/cloudreve.db
+      - ./volumes/cloudreve/avatar:/cloudreve/avatar
+    depends_on:
+      - aria2
+  aria2:
+    container_name: aria2
+    image: p3terx/aria2-pro
+    restart: unless-stopped
+    ports:
+      - "7099:7099"
+    environment:
+      - RPC_SECRET=cloudreve123
+      - RPC_PORT=7099
+    volumes:
+      - ./volumes/cloudreve/aria2/config:/config
+      - ./volumes/cloudreve/data:/data
+networks:
+  vlan-mysql:
+    external: true
+  vlan-redis:
+    external: true
