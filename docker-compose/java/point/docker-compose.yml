@@ -22,6 +22,11 @@ services:
       - /data/logs/point:/java/log
       - /data/tmp/point:/java/tmp
     #  - ./config:/java/config  #springboot外部注入配置文件目录
+    # 设置系统代理
+    #environment:
+     # - "http_proxy=http://squid:squid@43.138.255.110:3128"
+     # - "https_proxy=http://squid:squid@43.138.255.110:3128"
+     # - "no_proxy=localhost,127.0.0.1,43.143.56.113"
 networks:
   vlan-nacos:
     external: true
