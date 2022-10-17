@@ -27,6 +27,9 @@ sudo chmod +x /usr/local/bin/docker-compose
 # 验证docker-compose
 docker-compose version
 
+# 安装git
+yum -y install git
+
 # 部署软件
 clone此项目,在各中间件目录下执行 "docker-compose up -d"
 
