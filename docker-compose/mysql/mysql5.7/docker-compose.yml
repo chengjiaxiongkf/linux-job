@@ -17,9 +17,9 @@ services:
     ports:
       - 3307:3307
     volumes:
-      - ./volumes/mysql:/var/lib/mysql
+      - /data/volumes/mysql:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
-      - ./volumes/conf.d/mysql.conf:/etc/mysql/conf.d/mysql.cnf
+      - /data/volumes/conf.d/mysql.conf:/etc/mysql/conf.d/mysql.cnf
     networks:
       - vlan-mysql
 networks:

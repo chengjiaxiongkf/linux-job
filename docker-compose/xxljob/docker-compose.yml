@@ -13,4 +13,4 @@ services:
       - "7009:7009"
     volumes:
       # 本地文件:映射容器文件
-      - "./volumes/data:/blade/data/applogs/xxl-job"
+      - "/data/volumes/data:/blade/data/applogs/xxl-job"

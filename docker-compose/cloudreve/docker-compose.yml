@@ -10,11 +10,11 @@ services:
     ports:
       - "7100:7100"
     volumes:
-      - ./volumes/cloudreve/data:/data
-      - ./volumes/cloudreve/uploads:/cloudreve/uploads
-      - ./volumes/cloudreve/conf.ini:/cloudreve/conf.ini
-      - ./volumes/cloudreve/cloudreve.db:/cloudreve/cloudreve.db
-      - ./volumes/cloudreve/avatar:/cloudreve/avatar
+      - /data/volumes/cloudreve/data:/data
+      - /data/volumes/cloudreve/uploads:/cloudreve/uploads
+      - /data/volumes/cloudreve/conf.ini:/cloudreve/conf.ini
+      - /data/volumes/cloudreve/cloudreve.db:/cloudreve/cloudreve.db
+      - /data/volumes/cloudreve/avatar:/cloudreve/avatar
     depends_on:
       - aria2
   aria2:
@@ -27,8 +27,8 @@ services:
       - RPC_SECRET=cloudreve123
       - RPC_PORT=7099
     volumes:
-      - ./volumes/cloudreve/aria2/config:/config
-      - ./volumes/cloudreve/data:/data
+      - /data/volumes/cloudreve/aria2/config:/config
+      - /data/volumes/cloudreve/data:/data
 networks:
   vlan-mysql:
     external: true

@@ -3,6 +3,6 @@ services:
   grafana:
     image: grafana/grafana:latest
     volumes:
-      - ./volumes/grafana:/var/lib/grafana
+      - /data/volumes/grafana:/var/lib/grafana
     ports:
       - "3000:3000"
