@@ -19,8 +19,8 @@ services:
       - vlan-mysql
       - vlan-redis
     volumes: #如果上传文件保存在本地需要进行地址映射
-      - /data/logs/point:/java/log
-      - /data/tmp/point:/java/tmp
+      - /data/volumes/java/logs/point:/java/log
+      - /data/volumes/java/tmp/point:/java/tmp
     #  - ./config:/java/config  #springboot外部注入配置文件目录
     # 设置系统代理
     #environment:

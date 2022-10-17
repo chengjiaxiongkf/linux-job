@@ -6,7 +6,7 @@ services:
     ports:
       - 6379:6379
     volumes:
-      - /data/volumes/redis:/data
+      - /data/volumes/redis6379/redis:/data
     command:
       # 执行的命令
       redis-server --appendonly yes
