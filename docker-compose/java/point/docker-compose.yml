@@ -1,36 +1,36 @@
-
 version: "3.3"
 services:
-  point:
+  gift-gateway-boot:
     build:
       context: ./ #Dockerfile的目录
-   # network_mode: host
+    network_mode: host
     restart: always
-    container_name: point
-    image: point
+    container_name: gift-gateway-boot
+    image: gift-gateway-boot
+    privileged: true #容器内root等同于宿主机root
     #depends_on:
     #  - mysql8
     #links:
     #  - mysql8
     ports:
-      - 7100:7100
-    networks:
-      - vlan-nacos
-      - vlan-mysql
-      - vlan-redis
+      - 88:88
+ #   networks:
+ #     - vlan-nacos
+ #     - vlan-mysql
+ #     - vlan-redis
     volumes: #如果上传文件保存在本地需要进行地址映射
-      - /data/volumes/java/logs/point:/java/log
-      - /data/volumes/java/tmp/point:/java/tmp
+      - /data/volumes/java/logs/gift-gateway-boot:/java/log
+      - /data/volumes/java/tmp/gift-gateway-boot:/java/tmp
     #  - ./config:/java/config  #springboot外部注入配置文件目录
     # 设置系统代理
     #environment:
      # - "http_proxy=http://squid:squid@43.138.255.110:3128"
      # - "https_proxy=http://squid:squid@43.138.255.110:3128"
      # - "no_proxy=localhost,127.0.0.1,43.143.56.113"
-networks:
-  vlan-nacos:
-    external: true
-  vlan-mysql:
-    external: true
-  vlan-redis:
-    external: true
+#networks:
+#  vlan-nacos:
+#    external: true
+#  vlan-mysql:
+#    external: true
+#  vlan-redis:
+#    external: true

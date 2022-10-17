@@ -89,6 +89,10 @@ echo '{
 vmware环境，宿主机C:\Windows\System32\drivers\etc\hosts 追加域名解析xxx.xxx.xxx.xx project.com即可指向nginx的80端口<br/>
 <br/>云服务器环境,需要dnspod之类的域名解析指向到云linux的nginx80端口，nginx需要加域名配置、证书配置、ssl配置
 
+#### 远程目录拷贝
+scp -i /data/2C4G_ssh_private root@xxx.xxx.xxx.xxx:/data/linux-job/docker-compose/nginx/volumes/conf/nginx.conf ./conf/
+nginx.conf
+
 #### mysql部署
 <需要先 docker network create vlan-mysql （目的是为了跟其他容器映射，使其直接使用容器名内网访问, 不需要的可以删除相关配置）>
 
