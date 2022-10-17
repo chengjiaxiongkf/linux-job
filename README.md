@@ -31,7 +31,9 @@ docker-compose version
 yum -y install git
 
 # 部署软件
-clone此项目,在各中间件目录下执行 "docker-compose up -d"
+git init
+git clone https://code.aliyun.com/514471552/linux-job.git
+clone此项目后,在各中间件目录下执行 "docker-compose up -d"
 
 # 软件目录
 
