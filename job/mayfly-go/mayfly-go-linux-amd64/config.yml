@@ -1,0 +1,32 @@
+server:
+  # debug release test
+  model: release
+  port: 19999
+  cors: true
+  tls:
+    enable: false
+    key-file: ./default.key
+    cert-file: ./default.pem
+  # 机器终端操作回放文件存储路径
+  machine-rec-path: ./rec
+jwt:
+  # jwt key，不设置默认使用随机字符串
+  key: rng123
+  # 过期时间单位分钟
+  expire-time: 1440
+# 资源密码aes加密key
+aes:
+  key: edg1231021020209
+mysql:
+  host: 127.0.0.1:3306
+  username: root
+  password: VtU8XAd28UZd4xZBYMJUtbDFdK5ssgUc
+  db-name: mayfly-go
+  config: charset=utf8&loc=Local&parseTime=true
+  max-idle-conns: 5
+log:
+   # 日志等级, trace, debug, info, warn, error, fatal
+  level: info
+  # file:
+  #   path: ./
+  #   name: mayfly.log

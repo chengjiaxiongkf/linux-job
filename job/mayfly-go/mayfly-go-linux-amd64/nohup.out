@@ -1,0 +1,180 @@
+panic: config.yml之 [aes.key] 长度需为16、24、32位长度, 当前为6位
+
+goroutine 1 [running]:
+mayfly-go/pkg/utils/assert.IsTrue(...)
+	/Users/hml/Desktop/project/go/mayfly-go/server/pkg/utils/assert/assert.go:11
+mayfly-go/pkg/config.(*Aes).Valid(0xf8b180?)
+	/Users/hml/Desktop/project/go/mayfly-go/server/pkg/config/aes.go:25 +0xa5
+mayfly-go/pkg/config.(*Config).Valid(0xc0003ea750)
+	/Users/hml/Desktop/project/go/mayfly-go/server/pkg/config/config.go:50 +0x3d
+mayfly-go/pkg/config.Init()
+	/Users/hml/Desktop/project/go/mayfly-go/server/pkg/config/config.go:26 +0x105
+mayfly-go/pkg/starter.RunWebServer()
+	/Users/hml/Desktop/project/go/mayfly-go/server/pkg/starter/run.go:11 +0x1b
+main.main()
+	/Users/hml/Desktop/project/go/mayfly-go/server/main.go:8 +0x17
+2022-12-19 19:38:36.077 [INFO] [mayfly-go/pkg/starter.printBanner:10] : 
+                        __ _                         
+ _ __ ___   __ _ _   _ / _| |_   _        __ _  ___  
+| '_ ' _ \ / _' | | | | |_| | | | |_____ / _' |/ _ \ 
+| | | | | | (_| | |_| |  _| | |_| |_____| (_| | (_) |   version: v1.3.1
+|_| |_| |_|\__,_|\__, |_| |_|\__, |      \__, |\___/ 
+                 |___/       |___/       |___/       
+2022-12-19 19:38:36.077 [INFO] [mayfly-go/pkg/starter.gormMysql:23] : 连接mysql [mysql8:3306]
+
+2022/12/19 19:38:36 [35m/Users/hml/Desktop/project/go/mayfly-go/server/pkg/starter/gorm.go:38
+[0m[31m[error] [0mfailed to initialize database, got error dial tcp: lookup mysql8 on 183.60.83.19:53: no such host
+2022-12-19 19:38:36.134 [PANIC] [mayfly-go/pkg/starter.gormMysql:39] : 连接mysql失败! [dial tcp: lookup mysql8 on 183.60.83.19:53: no such host]
+panic: (*logrus.Entry) 0xc000442070
+
+goroutine 1 [running]:
+github.com/sirupsen/logrus.(*Entry).log(0xc000442000, 0x0, {0xc0000f0140, 0x4d})
+	/Users/hml/Desktop/project/go/gopath/pkg/mod/github.com/sirupsen/logrus@v1.9.0/entry.go:260 +0x4a7
+github.com/sirupsen/logrus.(*Entry).Log(0xc000442000, 0x0, {0xc0002fbd08?, 0x1?, 0x1?})
+	/Users/hml/Desktop/project/go/gopath/pkg/mod/github.com/sirupsen/logrus@v1.9.0/entry.go:304 +0x4f
+github.com/sirupsen/logrus.(*Entry).Logf(0xc000442000, 0x0, {0x101aee8?, 0xc0002fbd68?}, {0xc0002fbe00?, 0x10?, 0xe8d300?})
+	/Users/hml/Desktop/project/go/gopath/pkg/mod/github.com/sirupsen/logrus@v1.9.0/entry.go:349 +0x85
+github.com/sirupsen/logrus.(*Logger).Logf(0xc0000ee500, 0x0, {0x101aee8, 0x17}, {0xc0002fbe00, 0x1, 0x1})
+	/Users/hml/Desktop/project/go/gopath/pkg/mod/github.com/sirupsen/logrus@v1.9.0/logger.go:154 +0x85
+github.com/sirupsen/logrus.(*Logger).Panicf(...)
+	/Users/hml/Desktop/project/go/gopath/pkg/mod/github.com/sirupsen/logrus@v1.9.0/logger.go:195
+mayfly-go/pkg/starter.gormMysql()
+	/Users/hml/Desktop/project/go/mayfly-go/server/pkg/starter/gorm.go:39 +0x445
+mayfly-go/pkg/starter.initDb(...)
+	/Users/hml/Desktop/project/go/mayfly-go/server/pkg/starter/gorm.go:14
+mayfly-go/pkg/starter.RunWebServer()
+	/Users/hml/Desktop/project/go/mayfly-go/server/pkg/starter/run.go:20 +0x7e
+main.main()
+	/Users/hml/Desktop/project/go/mayfly-go/server/main.go:8 +0x17
+2022-12-19 19:39:13.619 [INFO] [mayfly-go/pkg/starter.printBanner:10] : 
+                        __ _                         
+ _ __ ___   __ _ _   _ / _| |_   _        __ _  ___  
+| '_ ' _ \ / _' | | | | |_| | | | |_____ / _' |/ _ \ 
+| | | | | | (_| | |_| |  _| | |_| |_____| (_| | (_) |   version: v1.3.1
+|_| |_| |_|\__,_|\__, |_| |_|\__, |      \__, |\___/ 
+                 |___/       |___/       |___/       
+2022-12-19 19:39:13.619 [INFO] [mayfly-go/pkg/starter.gormMysql:23] : 连接mysql [127.0.0.1:3306]
+2022-12-19 19:39:13.621 [INFO] [mayfly-go/pkg/starter.runWebServer:24] : Listening and serving HTTP on :19999
+2022-12-19 19:47:06.843 [ERROR] [mayfly-go/pkg/ctx.LogHandler:66] [POST=/api/sys/accounts/login] : 用户登录
+<-e errCode: 400, errMsg: 用户名或密码错误
+2022-12-19 19:47:12.355 [ERROR] [mayfly-go/pkg/ctx.LogHandler:66] [POST=/api/sys/accounts/login] : 用户登录
+<-e errCode: 400, errMsg: 用户名或密码错误
+2022-12-19 19:47:30.761 [ERROR] [mayfly-go/pkg/ctx.LogHandler:66] [POST=/api/sys/accounts/login] : 用户登录
+<-e errCode: 400, errMsg: 用户名或密码错误
+2022-12-19 19:47:36.698 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uid=1] [uname=admin] [POST=/api/sys/accounts/login] : 用户登录 ->83ms
+--> 登录ip: 43.239.157.206
+2022-12-19 19:47:36.951 [ERROR] [mayfly-go/internal/sys/api.(*System).ConnectWs.func1:21] : 升级websocket失败
+
+2022/12/19 19:48:49 [31;1m/Users/hml/Desktop/project/go/mayfly-go/server/pkg/model/model.go:170 [35;1mrecord not found
+[0m[33m[0.971ms] [34;1m[rows:0][0m SELECT * FROM `t_db` WHERE `t_db`.`host` = '53436i76r9.qicp.vip' AND `t_db`.`port` = 44756 AND `t_db`.`tag_id` = 33 ORDER BY `t_db`.`id` LIMIT 1
+2022-12-19 19:48:49.611 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uid=1] [uname=admin] [POST=/api/dbs] : db-保存数据库信息 ->120ms
+--> {"Id":0,"name":"gift","type":"mysql","host":"53436i76r9.qicp.vip","port":44756,"username":"root","password":"****","params":"","database":"gift","remark":"","tagId":33,"tagPath":"default","enableSshTunnel":-1,"sshTunnelMachineId":0}
+2022-12-19 19:48:59.193 [INFO] [mayfly-go/internal/db/application.(*dbAppImpl).GetDbInstance:218] : 连接db: 53436i76r9.qicp.vip:44756/gift
+
+2022/12/19 19:49:00 [31;1m/Users/hml/Desktop/project/go/mayfly-go/server/pkg/model/model.go:170 [35;1mrecord not found
+[0m[33m[1.034ms] [34;1m[rows:0][0m SELECT * FROM `t_db_sql` WHERE `t_db_sql`.`creator_id` = 1 AND `t_db_sql`.`db_id` = 13 AND `t_db_sql`.`db` = 'gift' AND `t_db_sql`.`type` = 1 AND `t_db_sql`.`name` = 'default' ORDER BY `t_db_sql`.`id` LIMIT 1
+
+2022/12/19 19:51:10 [31;1m/Users/hml/Desktop/project/go/mayfly-go/server/pkg/model/model.go:170 [35;1mrecord not found
+[0m[33m[1.022ms] [34;1m[rows:0][0m SELECT * FROM `t_db` WHERE `t_db`.`host` = '43.143.56.113' AND `t_db`.`port` = 3306 AND `t_db`.`tag_id` = 33 ORDER BY `t_db`.`id` LIMIT 1
+2022-12-19 19:51:10.718 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uname=admin] [POST=/api/dbs] [uid=1] : db-保存数据库信息 ->28ms
+--> {"Id":0,"name":"my2c4g","type":"mysql","host":"43.143.56.113","port":3306,"username":"root","password":"****","params":"","database":"point cloudreve boot-im mayfly-go dwsurvey","remark":"","tagId":33,"tagPath":"default","enableSshTunnel":-1,"sshTunnelMachineId":0}
+2022-12-19 19:51:30.114 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uid=1] [uname=admin] [POST=/api/dbs/13/exec-sql] : db-执行Sql ->108ms
+--> DB[id=13, tag=default, name=gift, ip=53436i76r9.qicp.vip:44756, database=gift] -> SELECT COUNT(*) count FROM t_diy_text_model
+2022-12-19 19:51:32.894 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [POST=/api/dbs/13/exec-sql] [uid=1] [uname=admin] : db-执行Sql ->44ms
+--> DB[id=13, tag=default, name=gift, ip=53436i76r9.qicp.vip:44756, database=gift] -> SELECT COUNT(*) count FROM t_diy_text_ticket
+2022-12-19 19:51:33.039 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uid=1] [uname=admin] [POST=/api/dbs/13/exec-sql] : db-执行Sql ->32ms
+--> DB[id=13, tag=default, name=gift, ip=53436i76r9.qicp.vip:44756, database=gift] -> SELECT * FROM t_diy_text_ticket   LIMIT 0, 20;
+2022-12-19 19:51:34.043 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uid=1] [uname=admin] [POST=/api/dbs/13/exec-sql] : db-执行Sql ->72ms
+--> DB[id=13, tag=default, name=gift, ip=53436i76r9.qicp.vip:44756, database=gift] -> SELECT COUNT(*) count FROM t_document_template
+2022-12-19 19:51:34.368 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [POST=/api/dbs/13/exec-sql] [uid=1] [uname=admin] : db-执行Sql ->32ms
+--> DB[id=13, tag=default, name=gift, ip=53436i76r9.qicp.vip:44756, database=gift] -> SELECT * FROM t_document_template   LIMIT 0, 20;
+2022-12-19 19:51:35.276 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uid=1] [uname=admin] [POST=/api/dbs/13/exec-sql] : db-执行Sql ->73ms
+--> DB[id=13, tag=default, name=gift, ip=53436i76r9.qicp.vip:44756, database=gift] -> SELECT COUNT(*) count FROM t_document_template_item
+2022-12-19 19:51:35.372 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uname=admin] [POST=/api/dbs/13/exec-sql] [uid=1] : db-执行Sql ->34ms
+--> DB[id=13, tag=default, name=gift, ip=53436i76r9.qicp.vip:44756, database=gift] -> SELECT * FROM t_document_template_item   LIMIT 0, 20;
+2022-12-19 19:52:14.215 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uname=admin] [POST=/api/dbs/13/exec-sql] [uid=1] : db-执行Sql ->36ms
+--> DB[id=13, tag=default, name=gift, ip=53436i76r9.qicp.vip:44756, database=gift] -> SELECT COUNT(*) count FROM t_document_template_item
+2022-12-19 19:52:14.316 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uname=admin] [POST=/api/dbs/13/exec-sql] [uid=1] : db-执行Sql ->33ms
+--> DB[id=13, tag=default, name=gift, ip=53436i76r9.qicp.vip:44756, database=gift] -> SELECT * FROM t_document_template_item   LIMIT 0, 20;
+2022-12-19 19:52:40.535 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [POST=/api/dbs/13/exec-sql] [uid=1] [uname=admin] : db-执行Sql ->79ms
+--> DB[id=13, tag=default, name=gift, ip=53436i76r9.qicp.vip:44756, database=gift] -> SELECT COUNT(*) count FROM t_pkg_model
+2022-12-19 19:52:40.631 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uid=1] [uname=admin] [POST=/api/dbs/13/exec-sql] : db-执行Sql ->34ms
+--> DB[id=13, tag=default, name=gift, ip=53436i76r9.qicp.vip:44756, database=gift] -> SELECT * FROM t_pkg_model   LIMIT 0, 20;
+2022-12-19 19:54:57.448 [ERROR] [mayfly-go/pkg/ctx.LogHandler:66] [uid=1] [uname=admin] [POST=/api/redis] : redis-保存信息
+--> {"Id":0,"name":"my2c4g","host":"43.143.56.113","password":"****","mode":"standalone","db":"0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15","enableSshTunnel":-1,"sshTunnelMachineId":0,"tagId":33,"tagPath":"default","remark":""}
+<-e errCode: 400, errMsg: Redis连接失败: dial tcp: address 43.143.56.113: missing port in address
+
+2022/12/19 19:55:10 [31;1m/Users/hml/Desktop/project/go/mayfly-go/server/pkg/model/model.go:170 [35;1mrecord not found
+[0m[33m[0.825ms] [34;1m[rows:0][0m SELECT * FROM `t_redis` WHERE `t_redis`.`host` = '43.143.56.113:6379' ORDER BY `t_redis`.`id` LIMIT 1
+2022-12-19 19:55:10.027 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uid=1] [uname=admin] [POST=/api/redis] : redis-保存信息 ->18ms
+--> {"Id":0,"name":"my2c4g","host":"43.143.56.113:6379","password":"****","mode":"standalone","db":"0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15","enableSshTunnel":-1,"sshTunnelMachineId":0,"tagId":33,"tagPath":"default","remark":""}
+2022-12-19 19:55:12.807 [INFO] [mayfly-go/internal/redis/application.(*redisAppImpl).GetRedisInstance:162] : 连接redis: 43.143.56.113:6379
+2022-12-19 19:55:30.849 [INFO] [mayfly-go/internal/redis/application.(*redisAppImpl).GetRedisInstance:162] : 连接redis: 43.143.56.113:6379
+2022-12-19 19:55:31.941 [INFO] [mayfly-go/internal/redis/application.(*redisAppImpl).GetRedisInstance:162] : 连接redis: 43.143.56.113:6379
+2022-12-19 19:55:32.893 [INFO] [mayfly-go/internal/redis/application.(*redisAppImpl).GetRedisInstance:162] : 连接redis: 43.143.56.113:6379
+2022-12-19 19:55:33.907 [INFO] [mayfly-go/internal/redis/application.(*redisAppImpl).GetRedisInstance:162] : 连接redis: 43.143.56.113:6379
+2022-12-19 19:55:34.868 [INFO] [mayfly-go/internal/redis/application.(*redisAppImpl).GetRedisInstance:162] : 连接redis: 43.143.56.113:6379
+2022-12-19 19:55:35.889 [INFO] [mayfly-go/internal/redis/application.(*redisAppImpl).GetRedisInstance:162] : 连接redis: 43.143.56.113:6379
+2022-12-19 19:55:37.151 [INFO] [mayfly-go/internal/redis/application.(*redisAppImpl).GetRedisInstance:162] : 连接redis: 43.143.56.113:6379
+2022-12-19 19:55:38.463 [INFO] [mayfly-go/internal/redis/application.(*redisAppImpl).GetRedisInstance:162] : 连接redis: 43.143.56.113:6379
+2022-12-19 19:55:39.435 [INFO] [mayfly-go/internal/redis/application.(*redisAppImpl).GetRedisInstance:162] : 连接redis: 43.143.56.113:6379
+2022-12-19 19:55:40.603 [INFO] [mayfly-go/internal/redis/application.(*redisAppImpl).GetRedisInstance:162] : 连接redis: 43.143.56.113:6379
+2022-12-19 19:55:41.572 [INFO] [mayfly-go/internal/redis/application.(*redisAppImpl).GetRedisInstance:162] : 连接redis: 43.143.56.113:6379
+2022-12-19 19:55:42.540 [INFO] [mayfly-go/internal/redis/application.(*redisAppImpl).GetRedisInstance:162] : 连接redis: 43.143.56.113:6379
+2022-12-19 19:55:43.973 [INFO] [mayfly-go/internal/redis/application.(*redisAppImpl).GetRedisInstance:162] : 连接redis: 43.143.56.113:6379
+2022-12-19 19:55:45.129 [INFO] [mayfly-go/internal/redis/application.(*redisAppImpl).GetRedisInstance:162] : 连接redis: 43.143.56.113:6379
+2022-12-19 19:55:46.304 [INFO] [mayfly-go/internal/redis/application.(*redisAppImpl).GetRedisInstance:162] : 连接redis: 43.143.56.113:6379
+2022-12-19 19:56:22.039 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [DELETE=/api/redis/7/0/key] [uid=1] [uname=admin] : redis-删除key ->3ms
+--> Redis[id=7, tag=default, host=43.143.56.113:6379, db=0] -> 删除key: backup4
+2022-12-19 19:56:23.911 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uname=admin] [DELETE=/api/redis/7/0/key] [uid=1] : redis-删除key ->4ms
+--> Redis[id=7, tag=default, host=43.143.56.113:6379, db=0] -> 删除key: backup3
+2022-12-19 19:56:25.657 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uid=1] [uname=admin] [DELETE=/api/redis/7/0/key] : redis-删除key ->3ms
+--> Redis[id=7, tag=default, host=43.143.56.113:6379, db=0] -> 删除key: backup2
+2022-12-19 19:56:27.610 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [DELETE=/api/redis/7/0/key] [uid=1] [uname=admin] : redis-删除key ->3ms
+--> Redis[id=7, tag=default, host=43.143.56.113:6379, db=0] -> 删除key: backup1
+
+2022/12/19 20:00:03 [31;1m/Users/hml/Desktop/project/go/mayfly-go/server/pkg/model/model.go:170 [35;1mrecord not found
+[0m[33m[0.554ms] [34;1m[rows:0][0m SELECT `id`,`name`,`username`,`password`,`status`,`last_login_time`,`last_login_ip` FROM `t_sys_account` WHERE `t_sys_account`.`username` = 'root' ORDER BY `t_sys_account`.`id` LIMIT 1
+2022-12-19 20:00:03.256 [ERROR] [mayfly-go/pkg/biz.ErrIsNil:13] : 用户名或密码错误: record not found
+2022-12-19 20:00:03.256 [ERROR] [mayfly-go/pkg/ctx.LogHandler:66] [POST=/api/sys/accounts/login] : 用户登录
+<-e errCode: 400, errMsg: 用户名或密码错误
+2022-12-19 20:00:19.737 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uid=1] [uname=admin] [POST=/api/sys/accounts/login] : 用户登录 ->83ms
+--> 登录ip: 103.35.74.21
+2022-12-19 20:00:19.954 [ERROR] [mayfly-go/internal/sys/api.(*System).ConnectWs.func1:21] : 升级websocket失败
+[mysql] 2022/12/19 20:00:33 packets.go:123: closing bad idle connection: EOF
+
+2022/12/19 20:00:35 [31;1m/Users/hml/Desktop/project/go/mayfly-go/server/pkg/model/model.go:170 [35;1mrecord not found
+[0m[33m[0.953ms] [34;1m[rows:0][0m SELECT * FROM `t_db_sql` WHERE `t_db_sql`.`creator_id` = 1 AND `t_db_sql`.`db_id` = 13 AND `t_db_sql`.`db` = 'gift' AND `t_db_sql`.`type` = 1 AND `t_db_sql`.`name` = 'default' ORDER BY `t_db_sql`.`id` LIMIT 1
+2022-12-19 20:18:47.046 [ERROR] [mayfly-go/pkg/ctx.LogHandler:66] [POST=/api/sys/accounts/login] : 用户登录
+<-e errCode: 400, errMsg: 用户名或密码错误
+2022-12-19 20:18:57.213 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uid=1] [uname=admin] [POST=/api/sys/accounts/login] : 用户登录 ->87ms
+--> 登录ip: 183.25.192.39
+2022-12-19 20:18:57.394 [ERROR] [mayfly-go/internal/sys/api.(*System).ConnectWs.func1:21] : 升级websocket失败
+[mysql] 2022/12/19 20:19:16 packets.go:123: closing bad idle connection: EOF
+
+2022/12/19 20:19:16 [31;1m/Users/hml/Desktop/project/go/mayfly-go/server/pkg/model/model.go:170 [35;1mrecord not found
+[0m[33m[0.939ms] [34;1m[rows:0][0m SELECT * FROM `t_db_sql` WHERE `t_db_sql`.`creator_id` = 1 AND `t_db_sql`.`db_id` = 13 AND `t_db_sql`.`db` = 'gift' AND `t_db_sql`.`type` = 1 AND `t_db_sql`.`name` = 'default' ORDER BY `t_db_sql`.`id` LIMIT 1
+2022-12-19 20:25:33.610 [INFO] [mayfly-go/internal/redis/application.glob..func1:252] : 删除redis连接缓存 id = 7/3
+2022-12-19 20:25:33.610 [INFO] [mayfly-go/internal/redis/application.glob..func1:252] : 删除redis连接缓存 id = 7/1
+2022-12-19 20:25:33.610 [INFO] [mayfly-go/internal/redis/application.glob..func1:252] : 删除redis连接缓存 id = 7/2
+2022-12-19 20:25:38.610 [INFO] [mayfly-go/internal/redis/application.glob..func1:252] : 删除redis连接缓存 id = 7/8
+2022-12-19 20:25:38.610 [INFO] [mayfly-go/internal/redis/application.glob..func1:252] : 删除redis连接缓存 id = 7/4
+2022-12-19 20:25:38.610 [INFO] [mayfly-go/internal/redis/application.glob..func1:252] : 删除redis连接缓存 id = 7/5
+2022-12-19 20:25:38.610 [INFO] [mayfly-go/internal/redis/application.glob..func1:252] : 删除redis连接缓存 id = 7/6
+2022-12-19 20:25:38.610 [INFO] [mayfly-go/internal/redis/application.glob..func1:252] : 删除redis连接缓存 id = 7/7
+2022-12-19 20:25:43.610 [INFO] [mayfly-go/internal/redis/application.glob..func1:252] : 删除redis连接缓存 id = 7/9
+2022-12-19 20:25:43.610 [INFO] [mayfly-go/internal/redis/application.glob..func1:252] : 删除redis连接缓存 id = 7/10
+2022-12-19 20:25:43.610 [INFO] [mayfly-go/internal/redis/application.glob..func1:252] : 删除redis连接缓存 id = 7/11
+2022-12-19 20:25:43.610 [INFO] [mayfly-go/internal/redis/application.glob..func1:252] : 删除redis连接缓存 id = 7/12
+2022-12-19 20:25:48.610 [INFO] [mayfly-go/internal/redis/application.glob..func1:252] : 删除redis连接缓存 id = 7/13
+2022-12-19 20:25:48.610 [INFO] [mayfly-go/internal/redis/application.glob..func1:252] : 删除redis连接缓存 id = 7/14
+2022-12-19 20:25:53.610 [INFO] [mayfly-go/internal/redis/application.glob..func1:252] : 删除redis连接缓存 id = 7/15
+2022-12-19 20:26:48.609 [INFO] [mayfly-go/internal/redis/application.glob..func1:252] : 删除redis连接缓存 id = 7/0
+[mysql] 2022/12/19 20:36:20 packets.go:123: closing bad idle connection: EOF
+2022-12-19 21:24:18.610 [INFO] [mayfly-go/internal/db/application.glob..func1:313] : 删除db连接缓存 id = 13:gift
+2022-12-19 21:24:18.610 [ERROR] [mayfly-go/internal/db/application.(*DbInstance).Close:298] : 关闭数据库实例[13:gift]连接失败: bad connection
+2022-12-19 22:12:38.953 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uname=admin] [POST=/api/sys/accounts/login] [uid=1] : 用户登录 ->83ms
+--> 登录ip: 43.239.157.206
+2022-12-19 22:12:39.459 [ERROR] [mayfly-go/internal/sys/api.(*System).ConnectWs.func1:21] : 升级websocket失败
+2022-12-19 22:13:33.797 [INFO] [mayfly-go/pkg/ctx.LogHandler:69] [uname=admin] [POST=/api/dbs] [uid=1] : db-保存数据库信息 ->128ms
+--> {"Id":13,"name":"gift","type":"mysql","host":"53436i76r9.qicp.vip","port":44756,"username":"root","password":"****","params":"","database":"sakila world ctf_znph2 gift privatestar qrbind star ma_vip interact zentao micro zq-fa ctf_province_agent znph_dms znph_rms test micro_bak ctf_sso delivery cert hr_talent_manage","remark":"","tagId":33,"tagPath":"default","enableSshTunnel":-1,"sshTunnelMachineId":0}
