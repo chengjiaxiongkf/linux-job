@@ -4,7 +4,7 @@
 <br/><br/> 
 
 #### [演示图]
-![image](https://raw.githubusercontent.com/chengjiaxiongkf/linux-job/master/img/all.jpg)
+![image](https://www.cjxhss.com/img/all.jpg)
 # 安装前置(不需要可以跳过)
 sudo yum update
 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
