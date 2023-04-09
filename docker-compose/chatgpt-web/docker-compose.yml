@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  chatgpt-web:
+    image: chenzhaoyu94/chatgpt-web:main
+    ports:
+      - 3002:3002
+    environment:
+      # 二选一
+      OPENAI_API_KEY: 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
+      # 二选一
+      #OPENAI_ACCESS_TOKEN
+      # 反向代理，可选
+      #API_REVERSE_PROXY: https://chat.duti.tech/api/conversation
+      # 超时，单位毫秒，可选
+      TIMEOUT_MS: 60000
+      # 访问密钥,可选
+      AUTH_SECRET_KEY: 123456999
