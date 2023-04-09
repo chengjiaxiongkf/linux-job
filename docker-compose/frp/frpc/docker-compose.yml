@@ -7,5 +7,5 @@ services:
     network_mode: host #直接跟宿主机共用网络
     privileged: true #容器内root等同于宿主机root
     volumes:
-      - /data/volumes/frpc.ini:/etc/frp/frpc.ini
+      - /data/volumes/frpc/frpc.ini:/etc/frp/frpc.ini
       - /etc/localtime:/etc/localtime:ro
