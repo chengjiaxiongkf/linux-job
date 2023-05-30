@@ -21,7 +21,7 @@ sudo systemctl start docker
 # 验证docker
 docker version
 # 安装docker-compose(网络超时的话重试几遍)
-sudo curl -L "https://github.com/docker/compose/releases/download/1.28.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose
 # 目录授权
 sudo chmod +x /usr/local/bin/docker-compose
 # 验证docker-compose
