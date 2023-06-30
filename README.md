@@ -11,6 +11,8 @@ sudo chmod +x install/install-docker.sh && sudo ./install/install-docker.sh
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose
 # 上述一直网络超时的话去我的个人网盘下载吧
 https://cloud-reve.cjxhss.com/s/jMTy
+下载后移动到指定的目录
+mv /usr/local/bin/docker-compose
 # 目录授权
 sudo chmod +x /usr/local/bin/docker-compose
 # 验证docker-compose
