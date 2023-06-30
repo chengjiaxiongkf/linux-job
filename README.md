@@ -5,23 +5,12 @@
 
 #### [演示图]
 ![image](https://www.cjxhss.com/img/all.jpg)
-# 安装前置(不需要可以跳过)
-sudo yum update
-sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-##### 从官网下载(网络超时的话重试几遍或者换下载地址)
-sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-##### 从阿里云下载(网络超时的话重试几遍或者换下载地址)
-sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-# 安装docker
-sudo yum install docker
-# 开机启动docker
-sudo systemctl enable docker
-# 启动docker
-sudo systemctl start docker
-# 验证docker
-docker version
-# 安装docker-compose(网络超时的话重试几遍)
+# 安装前置
+sudo chmod +x install/install-docker.sh && sudo ./install/install-docker.sh
+# 安装docker-compose
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose
+# 上述一直网络超时的话去我的个人网盘下载吧
+https://cloud-reve.cjxhss.com/s/jMTy
 # 目录授权
 sudo chmod +x /usr/local/bin/docker-compose
 # 验证docker-compose
