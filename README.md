@@ -30,7 +30,8 @@ clone此项目后,在各中间件目录下执行 "docker-compose up -d"
 # 软件目录
 
 docker-compose：
-
+          chatgpt-web(快速部署一个集成了chatgpt接口的页面，可以用3.5跟4.0，自行调整)
+          
 ​		cloudreve(开源项目，私有云盘)
 
 ​		elk+skywalking(ELK+skywalking日志系统)
@@ -40,6 +41,8 @@ docker-compose：
 ​		git(代码管理工具)
 
 ​		grafana(开源数据可视化web)
+
+          ip-sec(科学上网)
 
 ​		java(docker容器部署java)
 
@@ -62,6 +65,10 @@ job:
 ​		java(jar包部署java应用)
 
 ​		maven(包管理工具)
+
+          mayfly-go(一个网页版的运维工具,维护ssh+mysql+redis+mongodb等内容)
+
+          shadowsocks(科学上网，私有飞机场)
 
 ​		squid(网络代理)
 
