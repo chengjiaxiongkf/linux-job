@@ -29,48 +29,47 @@ clone此项目后,在各中间件目录下执行 "docker-compose up -d"
 
 # 软件目录
 
-docker-compose：
+## docker-compose:
           chatgpt-web(快速部署一个集成了chatgpt接口的页面，可以用3.5跟4.0，自行调整)
           
-​		cloudreve(开源项目，私有云盘)
+          cloudreve(开源项目，私有云盘)
 
-​		elk+skywalking(ELK+skywalking日志系统)
+          elk+skywalking(ELK+skywalking日志系统)
 
-​		frp(内网穿透)
+          frp(内网穿透)
 
-​		git(代码管理工具)
-
-​		grafana(开源数据可视化web)
+          git(代码管理工具)
+          grafana(开源数据可视化web)
 
           ip-sec(科学上网)
 
-​		java(docker容器部署java)
+          java(docker容器部署java)
 
-​		mysql(关系型ACID数据库，含5.7、8.0两版本)
+          mysql(关系型ACID数据库，含5.7、8.0两版本)
 
-​		nacos(alibaba cloud nacos注册中心)
+          nacos(alibaba cloud nacos注册中心)
 
-​		nginx(nginx网关)
+          nginx(nginx网关)
 
-​		redis(缓存中间件)
+          redis(缓存中间件)
 
-​		rocketmq(apche顶级开源消息队列）
+          rocketmq(apche顶级开源消息队列）
+          
+          xxljob(定时任务调度平台，支持java，python，shell等多种方式定时执行)
 
-​		xxljob(定时任务调度平台，支持java，python，shell等多种方式定时执行)
+## job:
 
-job:
+          fineBI(商业级报表系统，2个账号并发内免费)
 
-​		fineBI(商业级报表系统，2个账号并发内免费)
+          java(jar包部署java应用)
 
-​		java(jar包部署java应用)
-
-​		maven(包管理工具)
+          maven(包管理工具)
 
           mayfly-go(一个网页版的运维工具,维护ssh+mysql+redis+mongodb等内容)
 
           shadowsocks(科学上网，私有飞机场)
 
-​		squid(网络代理)
+          squid(网络代理)
 
 ## Q&A:
 #### 设置linux时区
