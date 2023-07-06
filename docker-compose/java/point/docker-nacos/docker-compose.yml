@@ -1,0 +1,44 @@
+
+version: "3.3"
+services:
+  gift-base-boot:
+    build:
+      context: ./ #Dockerfile的目录
+    network_mode: host
+    restart: always
+    container_name: gift-base-boot
+    image: gift-base-boot
+    privileged: true #容器内root等同于宿主机root
+    #depends_on:
+    #  - mysql8
+    #links:
+    #  - mysql8
+    ports:
+      - 108:108
+ #   networks:
+ #     - vlan-nacos
+ #     - vlan-mysql
+ #     - vlan-redis
+    volumes: #如果上传文件保存在本地需要进行地址映射
+      - /data/volumes/java/logs/gift-base-boot:/java/logs
+      - /data/volumes/java/tmp/gift-base-boot:/java/tmp
+    #  - ./config:/java/config  #springboot外部注入配置文件目录
+    # 设置系统代理
+    #environment:
+       #- "NACOS_ID=b5c1168c-2b3f-4d53-b440-6f331453c888"
+       #- "NACOS_IP=43.138.255.110"
+       #- "NACOS_PORT=8848"
+       #- "NACOS_GROUP=DEFAULT_GROUP"
+       #- "NACOS_USERNAME="
+       #- "NACOS_PASSWORD="
+     # - "http_proxy=http://squid:squid@43.138.255.110:3128"
+     # - "https_proxy=http://squid:squid@43.138.255.110:3128"
+     # - "no_proxy=localhost,127.0.0.1,43.143.56.113"
+    env_file: .env
+#networks:
+#  vlan-nacos:
+#    external: true
+#  vlan-mysql:
+#    external: true
+#  vlan-redis:
+#    external: true

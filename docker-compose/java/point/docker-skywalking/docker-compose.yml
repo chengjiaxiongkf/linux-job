@@ -3,7 +3,9 @@ version: "3"
 services:
   # 第一个服务拉去jar包
   point:
-    image: point:latest
+    build:
+        context: ./
+    image: point
     container_name: point
     environment:
       - TZ=Asia/Shanghai
@@ -13,3 +15,4 @@ services:
       # 本地文件:映射容器文件
       - "/data/logs/point:/java/log"
       - "/data/linux-job/docker-compose/elk+skywalking/agent/:/java/skywalking"
+    env_file: .env
