@@ -1,0 +1,9 @@
+1. 修改 /data/volumes/wordpress/html/wp-config.php 文件
+
+if ( ! defined( 'ABSPATH' ) ) {
+        define( 'ABSPATH', __DIR__ . '/' );
+}
+
+上述代码的括号中间增加
+define('WP_HOME', 'http://'.$_SERVER['HTTP_HOST'].'/你的域名');
+define('WP_SITEURL', 'http://'.$_SERVER['HTTP_HOST'].'/你的域名');
