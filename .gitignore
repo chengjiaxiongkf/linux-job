@@ -23,7 +23,6 @@
 hs_err_pid*
 
 .vscode/
-target/
 .git/
 .idea/
 .DS_Store
