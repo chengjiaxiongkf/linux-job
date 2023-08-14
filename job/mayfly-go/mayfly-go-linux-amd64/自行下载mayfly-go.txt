@@ -1,0 +1,3 @@
+https://gitee.com/objs/mayfly-go/releases/
+
+mayfly-go-linux-amd64.zip
