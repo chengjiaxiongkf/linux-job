@@ -1,9 +1,9 @@
 #!/bin/bash
-echo "下载htpasswd>>> yum -y install httpd-tools"
-echo "设置账号密码>>> htpasswd -cd ./passwords squid"
+echo "1、先运行 ./install.sh"
+echo "2、设置账号密码>>> htpasswd -cd ./passwords squid"
 echo "提示输入密码>>> 自己设置密码"
-echo "参照./squid.conf 修改配置文件 vim /etc/squid/squid.conf"
-echo "systemctl start squid.service"
+echo "3、参照./squid.conf 修改配置文件 vim /etc/squid/squid.conf"
+echo "4、systemctl start squid.service"
 echo ''
 echo ''
 echo '=====Linux设置全局网络代理方法======='
