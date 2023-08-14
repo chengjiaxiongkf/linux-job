@@ -1,0 +1,17 @@
+version: "3.3"
+services:
+  java:
+    build:
+      context: ./ #Dockerfile的目录
+    network_mode: host
+    restart: always
+    container_name: ${CONTAINER_NAME}
+    image: ${IMAGE}
+    privileged: true #容器内root等同于宿主机root
+    ports:
+      - ${PORTS}:8080
+    volumes: #如果上传文件保存在本地需要进行地址映射
+      - /data/volumes/java/logs/${CONTAINER_NAME}:/java/logs
+      - /data/volumes/java/tmp/${CONTAINER_NAME}:/java/tmp
+    #  - ./config:/java/config  #springboot外部注入配置文件目录
+    env_file: .env
