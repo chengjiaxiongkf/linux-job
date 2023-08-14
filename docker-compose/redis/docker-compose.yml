@@ -1,6 +1,8 @@
 version: "3"
 services:
   redis:
+    privileged: true
+    restart: always
     image: redis
     container_name: redis
     ports:
@@ -11,4 +13,3 @@ services:
       # 执行的命令
       redis-server --appendonly yes
       # redis-server --requirepass 123456 --appendonly yes
-    restart: always
