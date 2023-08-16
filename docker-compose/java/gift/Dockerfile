@@ -12,7 +12,6 @@ ENV NACOS_GROUP=""
 ENV NACOS_USERNAME=""
 ENV NACOS_PASSWORD=""
 ENV PROFILE_ENV=""
-ENV PORTS=""
 RUN ln -sf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN mkdir -p /java
 WORKDIR /java
