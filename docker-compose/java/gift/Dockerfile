@@ -18,4 +18,4 @@ RUN mkdir -p /java
 WORKDIR /java
 EXPOSE 8080
 ADD ./target/app.jar ./
-CMD java -Dspring.profiles.active=$PROFILE_ENV -Dspring.cloud.nacos.discovery.server-addr=$NACOS_IP:$NACOS_PORT -Dspring.cloud.nacos.discovery.namespace=$NACOS_ID -Dspring.cloud.nacos.discovery.group=$NACOS_GROUP -Dspring.cloud.nacos.discovery.username=$NACOS_USERNAME -Dspring.cloud.nacos.discovery.password=$NACOS_PASSWORD $JAVA_OPTS $JAVA_MEM_OPTIONS -jar app.jar
+CMD java -Dserver.port=8080 -Dspring.profiles.active=$PROFILE_ENV -Dspring.cloud.nacos.discovery.server-addr=$NACOS_IP:$NACOS_PORT -Dspring.cloud.nacos.discovery.namespace=$NACOS_ID -Dspring.cloud.nacos.discovery.group=$NACOS_GROUP -Dspring.cloud.nacos.discovery.username=$NACOS_USERNAME -Dspring.cloud.nacos.discovery.password=$NACOS_PASSWORD $JAVA_OPTS $JAVA_MEM_OPTIONS -jar app.jar
