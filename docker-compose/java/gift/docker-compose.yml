@@ -13,5 +13,13 @@ services:
     volumes: #如果上传文件保存在本地需要进行地址映射
       - /data/volumes/java/logs/${CONTAINER_NAME}:/java/logs
       - /data/volumes/java/tmp/${CONTAINER_NAME}:/java/tmp
-    #  - ./config:/java/config  #springboot外部注入配置文件目录
+    #  - /data/volumes/java/config/${CONTAINER_NAME}:/java/config  #springboot外部注入配置文件目录
     env_file: .env
+    #networks:
+    #  - vlan-mysql
+    #  - vlan-redis
+#networks:
+#  vlan-mysql:
+#    external: true
+#  vlan-redis:
+#    external: true

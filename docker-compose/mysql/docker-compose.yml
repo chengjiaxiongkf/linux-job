@@ -19,8 +19,8 @@ services:
     volumes:
       - /data/volumes/mysql8/mysql:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
-    # networks:
-    #   - vlan-mysql
-# networks:
-#   vlan-mysql:
-#     external: true
+    #networks:
+    #  - vlan-mysql
+#networks:
+#  vlan-mysql:
+#    external: true

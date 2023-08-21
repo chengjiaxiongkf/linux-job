@@ -11,5 +11,10 @@ services:
       - /data/volumes/redis6379/redis:/data
     command:
       # 执行的命令
-      redis-server --appendonly yes
-      # redis-server --requirepass 123456 --appendonly yes
+      # redis-server --appendonly yes
+      redis-server --requirepass VtU8XAd --appendonly yes
+    #networks:
+    #  - vlan-redis
+#networks:
+#  vlan-redis:
+#    external: true
