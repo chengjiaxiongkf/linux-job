@@ -15,6 +15,11 @@ services:
       - /data/volumes/java/tmp/${CONTAINER_NAME}:/java/tmp
     #  - /data/volumes/java/config/${CONTAINER_NAME}:/java/config  #springboot外部注入配置文件目录
     env_file: .env
+    # 设置系统代理
+    #environment:
+    #  - "http_proxy=http://squid:squid@43.138.255.110:3128"
+    #  - "https_proxy=http://squid:squid@43.138.255.110:3128"
+    #  - "no_proxy=localhost,127.0.0.1,43.143.56.113,43.138.255.110"
     #networks:
     #  - vlan-mysql
     #  - vlan-redis
