@@ -78,6 +78,7 @@ timedatectl set-timezone Asia/Shanghai #修改为XX时区
 #### docker镜像源
 echo '{
      "registry-mirrors": [
+         "https://z5wfwhll.mirror.aliyuncs.com",
          "http://hub-mirror.c.163.com",
          "https://docker.mirrors.ustc.edu.cn",
          "https://registry.docker-cn.com"

@@ -1,0 +1,60 @@
+version: "3"
+services:
+  redis-master:
+    image: docker.io/redis:4.0.14
+    ports:
+      - "16379:6379"
+    volumes:
+      - /data/volumes/redis-sentinel/redis-master:/data
+    command: redis-server --save 60 1 --dir /data --requirepass VtU8XAd
+    networks:
+      - redis-sentinel-network
+
+  redis-slave1:
+    image: docker.io/redis:4.0.14
+    volumes:
+      - /data/volumes/redis-sentinel/redis-slave1:/data
+    command: redis-server --save 60 1 --dir /data --slaveof 111.230.64.242 16379 --requirepass VtU8XAd
+    networks:
+      - redis-sentinel-network
+
+  redis-slave2:
+    image: docker.io/redis:4.0.14
+    volumes:
+      - /data/volumes/redis-sentinel/redis-slave2:/data
+    command: redis-server --save 60 1 --dir /data --slaveof 111.230.64.242 16379 --requirepass VtU8XAd
+    networks:
+      - redis-sentinel-network
+
+  sentinel1:
+    image: docker.io/redis:4.0.14
+    command: redis-sentinel /redis/sentinel.conf
+    volumes:
+      - /data/volumes/redis-sentinel/sentinel1:/redis
+    ports:
+      - "26379:26379"
+    networks:
+      - redis-sentinel-network
+
+  sentinel2:
+    image: docker.io/redis:4.0.14
+    command: redis-sentinel /redis/sentinel.conf
+    volumes:
+      - /data/volumes/redis-sentinel/sentinel2:/redis
+    ports:
+      - "26380:26379"
+    networks:
+      - redis-sentinel-network
+
+  sentinel3:
+    image: docker.io/redis:4.0.14
+    command: redis-sentinel /redis/sentinel.conf
+    volumes:
+      - /data/volumes/redis-sentinel/sentinel3:/redis
+    ports:
+      - "26381:26379"
+    networks:
+      - redis-sentinel-network
+networks:
+  redis-sentinel-network:
+    external: true
