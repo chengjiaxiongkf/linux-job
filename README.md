@@ -27,6 +27,13 @@ git init
 git clone https://code.aliyun.com/514471552/linux-job.git
 clone此项目后,在各中间件目录下执行 "docker-compose up -d"
 
+# 腾讯云
+停止数据上报
+/home/staragent/bin/agent.sh
+
+卸载云监控
+wget -qO- https://raw.githubusercontent.com/littleplus/TencentAgentRemove/master/remove.sh | bash
+
 # 软件目录
 
 ## docker-compose:
