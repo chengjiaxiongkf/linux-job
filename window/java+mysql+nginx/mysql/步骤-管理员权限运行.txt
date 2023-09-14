@@ -1,0 +1,11 @@
+1. 下载mysql的zip压缩包
+    https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.34-winx64.zip
+2. 解压后根目录创建 data 文件夹
+3. my.ini放到根目录，修改里面的basedir以及datadir
+
+# 安装+初始化+启动
+./mysql-start.bat
+# 停止mysql服务
+./mysql-stop.bat
+# 删除mysql服务
+./mysql-delete.bat

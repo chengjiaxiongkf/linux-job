@@ -1,0 +1,1 @@
+D:\report\java\jdk1.8.0_191\bin\java.exe -jar -Dspring.profiles.active=prod -Xmx2G -Xms2G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 D:\report\java\aj-report-1.1.0.RELEASE.jar
