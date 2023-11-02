@@ -24,7 +24,7 @@ yum -y install git
 
 # 部署软件
 git init
-git clone https://code.aliyun.com/514471552/linux-job.git
+git clone https://github.com/chengjiaxiongkf/linux-job
 clone此项目后,在各中间件目录下执行 "docker-compose up -d"
 
 # 腾讯云
