@@ -1,3 +1,5 @@
+# 主库的my.cnf文件中设置
+
 # 显示主库目前的binlog状态跟偏移
 show master status;
  
