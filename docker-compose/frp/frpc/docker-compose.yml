@@ -9,3 +9,4 @@ services:
     volumes:
       - /data/volumes/frpc/frpc.ini:/etc/frp/frpc.ini
       - /etc/localtime:/etc/localtime:ro
+      - /data/frpc/frpc.toml:/etc/frp/frpc.toml

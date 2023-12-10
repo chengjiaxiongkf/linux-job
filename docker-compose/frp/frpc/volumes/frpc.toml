@@ -1,0 +1,10 @@
+serverAddr = "111.230.64.242"
+serverPort = 7000
+auth.token = "e4620cc31d3dbbdc"
+ 
+[[proxies]]
+name = "vpn11"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 9999
+remotePort = 7085
