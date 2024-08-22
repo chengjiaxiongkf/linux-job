@@ -1,0 +1,22 @@
+git clone https://github.com/lyy289065406/jira-docker /usr/local/jira-docker
+cd jira-docker
+docker-compose.yml up -d
+
+# Database Type: Mysql
+# Hostname: 172.168.88.2
+# Port: 3306
+# Database: jira
+# Username: jira
+# Password: 123456
+
+#License
+AAAB2g0ODAoPeNp9kttum0AQhu95CqTetKpAHHyoLa1UAhsFAtgF6iqWb9YwNqQY8AJOePtysuwGx
+3c72jl88//zxQtL1iIVKwmsIM+lybx+qJpXx5LI/IVqBTSP0gSJE0GYCj9kWWT2FCAJ0ywDypuRD
+0kOOIiKJgvbHnaWju5ixi4PW6CL3e+87oA4kVHTpCB+YZMDIFGSpyNJkIWfxyPvpwfmNaKEH5QsS
++qHJAeNFIAaIk4Yc5LA9FO9KoO2nbqwLOyoumKev/B7FtHqqm7CibMzArZIFA8ZXKAnoLqGHtauw
+q0N+Yl79OQHznRfVh1gRtOg9Au+Cbg83RVvhAJfd4xOgApawr20GoaokBRAu9S4I30ieYgs9U19x
+M6rc8RbZXbapyvjebwdGd7uu6qT5xcldCrRpkt3/acM4mD5S1XWEyM4ONm4DJUN2iDGLbe5T6Os9
+eHC8rlBN2y8JWitVc2ckMT/RNQ7Kw8M7efUGpu65mKbM8WpOB2PZkLX5qNGdQq6kXZ7mlsQ2lTuS
+JwDs6B7kkQ5adceeK1SaH8+XlZvyvnqpf9UasEyGuW92RpcFDdqFNbtUdivzSJst8m3zZzFJxKX7
+cBugcHJ3DHgmuC67tKzi/8BJN5ISjAsAhRZIHEuQbkGoHCRSit5W4n8GSiYNQIUK0cCnanxR3KFT
+lht2tUwCQi3GkE=X02mi

@@ -1,0 +1,19 @@
+# vim /usr/lib/systemd/system/frpc.service
+[Unit]
+Description=frpc
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/root/frp/frpc -c /root/frp/frpc.ini  //此处填写自己安装的frp目录                    
+
+[Install]
+WantedBy=multi-user.target
+
+#systemctl enable frps
+#启动frps
+#systemctl start frps
+#关闭frps
+#systemctl stop frps
+#重启frps
+#systemctl restart frps

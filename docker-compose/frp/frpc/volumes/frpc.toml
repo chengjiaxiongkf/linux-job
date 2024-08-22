@@ -1,6 +1,6 @@
 serverAddr = "111.230.64.242"
 serverPort = 7000
-auth.token = "xxx"
+auth.token = "e4620cc31d3dbbdc"
  
 [[proxies]]
 name = "vpn12"
