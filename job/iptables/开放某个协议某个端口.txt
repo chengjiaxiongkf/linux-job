@@ -1,0 +1,4 @@
+iptables -I INPUT -p $PROTOCOL --dport $PORT -j ACCEPT
+
+比如：
+iptables -I INPUT -p tcp --dport 443 -j ACCEPT
