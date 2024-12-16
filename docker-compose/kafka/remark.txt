@@ -1,0 +1,24 @@
+# 检验zookeeper集群中是否有kafka信息
+./zkCli.sh -server 127.0.0.1:2181
+
+ls /kafka/brokers/ids
+
+# 进入kafka1服务
+docker exec -it kafka1 /bin/bash
+
+# 创建topic【first】
+kafka-topics.sh --bootstrap-server localhost:9092 --create --partitions 3 --replication-factor 3 --topic first
+
+# 生产者发送消息到topic
+kafka-console-producer.sh --bootstrap-server localhost:9092 --topic first
+
+# -------------------------------------
+
+# 进入kafka2服务
+docker exec -it kafka2 /bin/bash
+
+# 查看主题列表
+kafka-topics.sh --bootstrap-server localhost:9093 --list
+
+# 消费者
+kafka-console-consumer.sh --bootstrap-server localhost:9093 --topic first

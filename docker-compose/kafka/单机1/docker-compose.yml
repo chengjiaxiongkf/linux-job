@@ -1,0 +1,53 @@
+version: '3.1'
+
+networks:
+  zk-net:  # 网络名
+    driver: bridge
+services:
+  # zookeeper集群
+  zoo1:
+    image: zookeeper:3.8.0
+    container_name: zoo1   # 容器名称
+    restart: always       # 开机自启
+    hostname: zoo1        # 主机名
+    ports:
+      - 2181:2181         # 端口号
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=zoo1:2888:3888;2181
+    networks:
+      - zk-net
+  # kafka集群
+  kafka1:
+    image: 'wurstmeister/kafka:2.12-2.3.0'
+    container_name: kafka1
+    hostname: kafka1
+    networks:
+      - zk-net
+    ports:
+      - '9092:9092'
+    environment:
+      # 非必须，设置自动创建 topic
+      - KAFKA_AUTO_CREATE_TOPICS_ENABLE=true
+      - KAFKA_ZOOKEEPER_CONNECT=zoo1:2181/kafka
+      - KAFKA_ADVERTISED_HOST_NAME=外网IP
+      - KAFKA_ADVERTISED_PORT=9092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://外网IP:9092
+      - KAFKA_LISTENERS=PLAINTEXT://:9092
+    depends_on:
+      - zoo1
+  kafka-manager:
+    image: hlebalbau/kafka-manager:latest
+    restart: always
+    container_name: kafa-manager
+    hostname: kafka-manager
+    privileged: true
+    ports:
+      - "9000:9000"
+    environment:
+      ZK_HOSTS: 外网IP:2181
+      KAFKA_BROKERS: 外网IP:9092 # 修改宿主机IP
+      APPLICATION_SECRET: "random-secret"
+      KAFKA_MANAGER_AUTH_ENABLED: "true"
+      KAFKA_MANAGER_USERNAME: admin      # web端账号
+      KAFKA_MANAGER_PASSWORD: admin   # web端密码
