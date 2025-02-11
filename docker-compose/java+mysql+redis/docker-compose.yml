@@ -1,0 +1,62 @@
+version: '3'
+
+services:
+  mysql8:
+    image: registry.cn-zhangjiakou.aliyuncs.com/cjx_new/mysql:8.0
+    restart: always
+    container_name: mysql8
+    environment:
+      MYSQL_ROOT_PASSWORD: VtU8XAd28UZd4xZBYMJUtbDFdK5ssgUc
+    command:
+      --default-authentication-plugin=caching_sha2_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+      --lower_case_table_names=1
+      --sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"
+      --skip-name-resolve
+    ports:
+      - 3306:3306
+    volumes:
+      - /data/1/mysql:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - app-network
+  redis:
+    privileged: true
+    restart: always
+    image: redis
+    container_name: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - /data/1/redis:/data
+    command:
+      # 执行的命令
+      # redis-server --appendonly yes
+      redis-server --requirepass VtU8XAd --appendonly yes
+    networks:
+      - app-network
+  java:
+    build:
+      context: ./ #Dockerfile的目录
+    restart: always
+    container_name: ${CONTAINER_NAME}
+    image: ${IMAGE}
+    privileged: true #容器内root等同于宿主机root
+    ports:
+      - ${PORTS}:${PORTS}
+    volumes: #如果上传文件保存在本地需要进行地址映射
+    # - /data/java/yuqing/logs/${CONTAINER_NAME}:/java/logs
+    # - /data/java/yuqing/tmp/${CONTAINER_NAME}:/java/tmp
+      - /data/1/config:/java/config
+    #  - /data/volumes/java/config/${CONTAINER_NAME}:/java/config  #springboot外部注入配置文件目录
+    env_file: .env
+    depends_on:
+      - redis
+      - mysql8
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge

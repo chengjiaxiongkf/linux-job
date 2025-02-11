@@ -11,8 +11,9 @@ services:
     ports:
       - ${PORTS}:8080
     volumes: #如果上传文件保存在本地需要进行地址映射
-      - /data/volumes/java/logs/${CONTAINER_NAME}:/java/logs
-      - /data/volumes/java/tmp/${CONTAINER_NAME}:/java/tmp
+      - /data/java/yuqing/logs/${CONTAINER_NAME}:/java/logs
+      - /data/java/yuqing/tmp/${CONTAINER_NAME}:/java/tmp
+      - /data/java/yuqing/config/${CONTAINER_NAME}:/java/config
     #  - /data/volumes/java/config/${CONTAINER_NAME}:/java/config  #springboot外部注入配置文件目录
     env_file: .env
     # 设置系统代理
