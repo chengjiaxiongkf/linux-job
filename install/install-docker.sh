@@ -6,12 +6,21 @@ sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/cen
 sudo yum install -y docker-ce docker-ce-cli
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
-     "registry-mirrors": [
-         "http://hub-mirror.c.163.com",
-         "https://docker.mirrors.ustc.edu.cn",
-         "https://registry.docker-cn.com",
-         "https://z5wfwhll.mirror.aliyuncs.com"
-     ]
+    "registry-mirrors": [
+        "https://docker.211678.top/",
+        "https://docker.1panel.live/",
+        "https://hub.rat.dev/",
+        "https://docker.m.daocloud.io/",
+        "https://do.nark.eu.org/",
+        "https://dockerpull.com/",
+        "https://dockerproxy.cn/",
+        "https://docker.awsl9527.cn/"
+    ],
+    "log-driver": "json-file",
+    "log-opts": {
+        "max-size": "10m",
+        "max-file": "3"
+    }
 }
 EOF
 sudo systemctl enable docker

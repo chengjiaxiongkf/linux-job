@@ -8,6 +8,11 @@
         "https://dockerpull.com/",
         "https://dockerproxy.cn/",
         "https://docker.awsl9527.cn/"
-    ]
+    ],
+    "log-driver": "json-file",
+    "log-opts": {
+        "max-size": "10m",
+        "max-file": "3"
+    }
 }
     
