@@ -16,3 +16,4 @@ services:
       - /data/volumes/nginx/logs:/var/log/nginx/
       - /data/volumes/nginx/vhost:/etc/nginx/conf.d
       - /data/volumes/nginx/cert:/etc/nginx/cert
+      - /etc/letsencrypt:/etc/letsencrypt:ro  # 挂载certbot所在证书的整个目录
