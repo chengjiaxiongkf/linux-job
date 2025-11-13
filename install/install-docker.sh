@@ -25,4 +25,4 @@ sudo tee /etc/docker/daemon.json <<-'EOF'
 EOF
 sudo systemctl enable docker
 sudo systemctl start docker
-docker version
+sudo docker version
