@@ -1,0 +1,52 @@
+services:
+  rustdesk-server:
+    image: rustdesk/rustdesk-server:latest
+    container_name: rustdesk-server
+    environment:
+      - RUST_LOG=info
+    ports:
+      - "21115:21115"
+      - "21116:21116"
+      - "21116:21116/udp"
+      - "21118:21118"
+    volumes:
+      - ./data:/root
+    restart: unless-stopped
+    networks:
+      - rustdesk-net
+    command: ["hbbs", "-r", "localhost:21116"]
+
+  rustdesk-web:
+    image: rustdesk/rustdesk-server:latest
+    container_name: rustdesk-web
+    environment:
+      - RUST_LOG=info
+    ports:
+      - "21114:21114"
+      - "21117:21117"
+      - "21119:21119"
+    volumes:
+      - ./data:/root
+    restart: unless-stopped
+    networks:
+      - rustdesk-net
+    command: ["hbbr"]
+
+  nginx:
+    image: nginx:alpine
+    container_name: rustdesk-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    restart: unless-stopped
+    networks:
+      - rustdesk-net
+    depends_on:
+      - rustdesk-server
+      - rustdesk-web
+
+networks:
+  rustdesk-net:
+    driver: bridge
