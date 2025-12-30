@@ -30,7 +30,7 @@ sudo apt update && sudo apt install -y curl
 bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 ```
 
-这里如果下载的时报网络错误，可以手动下载后上传到服务器的/tmp目录后在继续执行此命令
+如果是报错v2ray-linux-64.zip网络问题，请手动下载并把v2ray-linux-64.zip放到 /tmp/v2ray-linux-64.zip 后重新运行
 
 #### 3\. 安装 Nginx 和相关工具
 

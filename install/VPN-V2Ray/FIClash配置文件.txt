@@ -1,0 +1,51 @@
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+  - name: VLESS
+    type: vless          
+    server: 【xxx.domian.com】
+    port: 443          
+    uuid: 【xxxxxxxxxxxxxxxxxxxxx】 
+    cipher: auto       
+    tls: true       
+    skip-cert-verify: false 
+    network: ws       
+    ws-opts:
+      path: "[/your_path]"
+      headers:
+        Host: 【xxx.domian.com】
+proxy-groups:
+  - name: 代理
+    type: select
+    proxies: [VLESS, DIRECT, REJECT]
+rules:
+  - PROCESS-NAME,WechatAppEx.exe,DIRECT
+  - PROCESS-NAME,Trae.exe,DIRECT
+  - PROCESS-NAME,QQMusic.exe,DIRECT
+  - PROCESS-NAME,BaiduNetdisk.exe,DIRECT
+  - PROCESS-NAME,idea64.exe,DIRECT
+  - PROCESS-NAME,Powershell.exe,DIRECT
+  - PROCESS-NAME,Hearthstone.exe,DIRECT
+  - PROCESS-NAME,SGSmartAssistant.exe,DIRECT
+  - DOMAIN-SUFFIX,rustdesk.com,DIRECT
+  - DOMAIN-SUFFIX,aliyun.com,DIRECT
+  - DOMAIN-SUFFIX,aliyuncs.com,DIRECT
+  - DOMAIN-SUFFIX,cloudflare.com,DIRECT
+  - DOMAIN-SUFFIX,facttask.com,DIRECT
+  - DOMAIN-SUFFIX,aumeat.vip,DIRECT
+  - DOMAIN-SUFFIX,cjxhss.com,DIRECT
+  - DOMAIN-SUFFIX,sampras.vip,DIRECT
+  - DOMAIN-SUFFIX,gitlab.dt-slhp.com,DIRECT
+  - DOMAIN-SUFFIX,myqcloud.com,DIRECT
+  - DOMAIN-SUFFIX,qq.com,DIRECT
+  - DOMAIN-SUFFIX,tencent-cloud.com,DIRECT
+  - DOMAIN-SUFFIX,tencent.com,DIRECT
+  - DOMAIN-SUFFIX,apifox.com,DIRECT
+  - DOMAIN-SUFFIX,xiaohongshu.com,DIRECT
+  - DOMAIN-SUFFIX,bilibili.com,DIRECT
+  - DOMAIN-SUFFIX,baidu.com,DIRECT
+  - DOMAIN-SUFFIX,yingdao.com,DIRECT
+  - DOMAIN-SUFFIX,douyin.com,DIRECT
+  - MATCH,代理
