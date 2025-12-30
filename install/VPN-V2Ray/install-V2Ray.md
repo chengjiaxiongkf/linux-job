@@ -54,7 +54,7 @@ sudo systemctl start nginx
 
 #### 2\. 申请证书
 
-假设您的域名是 `ss.sampras.vip`，您将使用 Nginx 的 Webroot 模式来验证域名所有权。
+假设您的域名是 `xx.domain.com`，您将使用 Nginx 的 Webroot 模式来验证域名所有权。
 
 ```bash
 # 激活 acme.sh
@@ -62,7 +62,7 @@ source ~/.bashrc
 # 请运行以下命令，将 your@example.com 替换为您自己的有效邮箱地址：
 ~/.acme.sh/acme.sh --register-account -m your@example.com
 # webroot模式申请证书
-~/.acme.sh/acme.sh --issue -d ss.sampras.vip --webroot /var/www/html
+~/.acme.sh/acme.sh --issue -d xx.domain.com --webroot /var/www/html
 # 重启nginx
 sudo systemctl restart nginx
 ```
@@ -75,7 +75,7 @@ sudo systemctl restart nginx
 # 确保有这个目录
 sudo mkdir -p /etc/v2ray/
 # 重新生成证书并自动续期
-~/.acme.sh/acme.sh --installcert -d ss.sampras.vip \
+~/.acme.sh/acme.sh --installcert -d xx.domain.com \
     --key-file /etc/v2ray/v2ray.key \
     --fullchain-file /etc/v2ray/v2ray.crt \
     --reloadcmd "sudo systemctl restart v2ray"
@@ -96,7 +96,7 @@ sudo mv /usr/local/etc/v2ray/config.json /usr/local/etc/v2ray/config.json.bak
 请使用 `sudo vim /usr/local/etc/v2ray/config.json` 编辑器，并将以下配置粘贴进去，替换掉其中的占位符：
 
   * **`您的 UUID`**：使用在线 UUID 生成器生成一个随机 ID。
-  * **`ss.sampras.vip`**：替换为您的域名。
+  * **`xx.domain.com`**：替换为您的域名。
 
 <!-- end list -->
 
@@ -169,7 +169,7 @@ server {
     ssl_certificate_key   /etc/v2ray/v2ray.key; 
     ssl_protocols         TLSv1.2 TLSv1.3;
     ssl_ciphers           HIGH:!aNULL:!MD5;
-    server_name           ss.sampras.vip; 
+    server_name           xx.domain.com; 
 
     # V2Ray WebSocket 转发配置
     location /your_path {
@@ -195,7 +195,7 @@ server {
 server {
     listen 80;
     listen [::]:80;
-    server_name ss.sampras.vip;
+    server_name xx.domain.com;
     return 301 https://$host$request_uri;
 }
 ```
@@ -214,7 +214,7 @@ sudo systemctl restart nginx
 | 参数 | 填写内容 |
 | :--- | :--- |
 | **协议** | VLESS |
-| **地址 (Address)** | `ss.sampras.vip` (您的域名) |
+| **地址 (Address)** | `xx.domain.com` (您的域名) |
 | **端口 (Port)** | 443 |
 | **UUID** | 您在服务端设置的 `您的 UUID` |
 | **传输协议 (Transport)** | WebSocket (ws) |
