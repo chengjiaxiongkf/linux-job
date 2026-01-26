@@ -27,43 +27,32 @@ mkdir -p "nginx/conf.d"
 # 2. 创建Nginx配置模板
 echo -e "${YELLOW}[2/5] 创建Nginx配置...${NC}"
 cat > "nginx/conf.d/${PRIMARY_DOMAIN}.conf" << EOF
-# HTTP配置 - 用于证书申请
-server {
-    listen 80;
-    server_name ${DOMAINS};
-    
-    location /.well-known/acme-challenge/ {
-        root ${CERTBOT_WWW};
-        try_files \$uri =404;
-    }
-    
-    location / {
-        return 301 https://\$host\$request_uri;
-    }
-}
-
 # HTTPS配置 - 申请证书后取消注释
 # server {
 #     listen 443 ssl http2;
 #     server_name ${DOMAINS};
-#     
+#     # SSL 证书路径
 #     ssl_certificate ${LETSENCRYPT_DIR}/live/${PRIMARY_DOMAIN}/fullchain.pem;
 #     ssl_certificate_key ${LETSENCRYPT_DIR}/live/${PRIMARY_DOMAIN}/privkey.pem;
-#     include /etc/nginx/conf.d/ssl-common.conf;
+#     # 日志
+#     access_log /var/log/nginx/${DOMAINS}.log;
+#     error_log /var/log/nginx/${DOMAINS}.log; 
 #     
 #     root /usr/share/nginx/html/${PRIMARY_DOMAIN};
 #     index index.html index.htm;
 #     
 #     location / {
-#         try_files \$uri \$uri/ =404;
+#         try_files $uri $uri/ /index.html;
 #     }
 #     
 #     # 代理配置示例
-#     # location /api/ {
-#     #     proxy_pass http://backend:3000;
-#     #     proxy_set_header Host \$host;
-#     #     proxy_set_header X-Real-IP \$remote_addr;
-#     # }
+#     location /api/ {
+#         proxy_set_header Host $http_host;
+#         proxy_set_header X-Real-IP $remote_addr;
+#         proxy_set_header REMOTE-HOST $remote_addr;
+#         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#         proxy_pass http://xxxxx:8080/;
+#     }
 # }
 EOF
 
