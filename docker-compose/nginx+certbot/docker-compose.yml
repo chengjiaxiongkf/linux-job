@@ -29,10 +29,6 @@ services:
       - ./html/certbot-challenge:/var/www/certbot
       - ./certbot/config:/etc/letsencrypt/renewal
       - ./certbot/logs:/var/log/letsencrypt
-    # 每天凌晨2点检查续期
-    command: >
-      sh -c 'echo "0 2 * * * certbot renew --quiet --post-hook \"nginx -s reload\"" >> /etc/crontabs/root &&
-             crond -f'
     depends_on:
       - nginx
     networks:
