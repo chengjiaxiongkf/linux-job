@@ -18,6 +18,6 @@ chmod +x scripts/*.sh
 
 # 7. 定时任务（添加到crontab）
 # 每天凌晨3点检查续期
-0 3 * * * /data/linux-job-master/docker-compose/nginx+certbot/scripts/renew-all.sh >> /var/log/cert-renew.log 2>&1
+echo "0 3 * * * /data/linux-job-master/docker-compose/nginx+certbot/scripts/renew-all.sh >> /var/log/cert-renew.log 2>&1" | sudo crontab -
 # 每周一检查过期情况
 0 9 * * 1 /path/to/scripts/monitor-certs.sh >> /var/log/cert-monitor.log 2>&1
