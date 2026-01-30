@@ -9,6 +9,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - ./html:/usr/share/nginx/html:ro
@@ -25,6 +27,8 @@ services:
     container_name: certbot
     restart: unless-stopped
     volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
       - ./data/letsencrypt:/etc/letsencrypt
       - ./html/certbot-challenge:/var/www/certbot
       - ./certbot/config:/etc/letsencrypt/renewal

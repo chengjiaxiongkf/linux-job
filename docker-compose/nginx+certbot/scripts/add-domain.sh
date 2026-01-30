@@ -35,22 +35,22 @@ cat > "nginx/conf.d/${PRIMARY_DOMAIN}.conf" << EOF
 #     ssl_certificate ${LETSENCRYPT_DIR}/live/${PRIMARY_DOMAIN}/fullchain.pem;
 #     ssl_certificate_key ${LETSENCRYPT_DIR}/live/${PRIMARY_DOMAIN}/privkey.pem;
 #     # 日志
-#     access_log /var/log/nginx/${DOMAINS}.log;
-#     error_log /var/log/nginx/${DOMAINS}.log; 
+#     access_log /var/log/nginx/${DOMAINS}.access.log;
+#     error_log /var/log/nginx/${DOMAINS}.error.log; 
 #     
 #     root /usr/share/nginx/html/${PRIMARY_DOMAIN};
 #     index index.html index.htm;
 #     
 #     location / {
-#         try_files $uri $uri/ /index.html;
+#         try_files \$uri \$uri/ /index.html;
 #     }
 #     
 #     # 代理配置示例
 #     location /api/ {
-#         proxy_set_header Host $http_host;
-#         proxy_set_header X-Real-IP $remote_addr;
-#         proxy_set_header REMOTE-HOST $remote_addr;
-#         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#         proxy_set_header Host \$http_host;
+#         proxy_set_header X-Real-IP \$remote_addr;
+#         proxy_set_header REMOTE-HOST \$remote_addr;
+#         proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
 #         proxy_pass http://xxxxx:8080/;
 #     }
 # }
