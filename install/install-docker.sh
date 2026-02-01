@@ -7,6 +7,7 @@ sudo yum install -y docker-ce docker-ce-cli
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
     "registry-mirrors": [
+        "https://docker.1ms.run",
         "https://docker.211678.top/",
         "https://docker.1panel.live/",
         "https://hub.rat.dev/",

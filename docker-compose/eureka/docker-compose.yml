@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  eureka:
+    image: steeltoeoss/eureka-server:latest
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    environment:
+      # 单机模式不向自己注册
+      - EUREKA_CLIENT_REGISTER_WITH_EUREKA=false
+      - EUREKA_CLIENT_FETCH_REGISTRY=false
+      # 关闭自我保护（开发环境方便测试）
+      - EUREKA_SERVER_ENABLE_SELF_PRESERVATION=false
+      # 清理失效服务的间隔（毫秒）
+      - EUREKA_SERVER_EVICTION_INTERVAL_TIMER_IN_MS=5000
+    networks:
+      - eureka-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  eureka-net:
+    driver: bridge
