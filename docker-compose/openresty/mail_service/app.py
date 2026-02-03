@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
+from email.utils import formataddr
 from datetime import date
 from collections import defaultdict
 
@@ -18,8 +19,9 @@ def send_mail():
     SMTP_HOST = 'smtp.qq.com'          # SMTP服务器地址
     SMTP_PORT = 465                    # SMTP端口
     SMTP_USER = '514471552@qq.com'     # 发件邮箱
-    SMTP_PASSWORD = 'xxxxx' # 邮箱授权码
-    MAIL_TO = 'LUXWEAVE|奢织<514471552@qq.com>'       # 收件邮箱
+    SMTP_PASSWORD = 'xxx' # 邮箱授权码
+    MAIL_TO = '514471552@qq.com'                      # 收件邮箱
+    MAIL_NAME = 'LUXWEAVE|奢织'                       # 显示名称
     # ==============================
 
     try:
@@ -52,8 +54,8 @@ def send_mail():
         content = f"姓名: {name}\n邮箱: {email}\n公司: {company}\n留言: {message}"
         msg = MIMEText(content, 'plain', 'utf-8')
         msg['Subject'] = Header(f"官网新留言: {name}", 'utf-8')
-        msg['From'] = f"LUXWEAVE|奢织<{SMTP_USER}>"
-        msg['To'] = MAIL_TO
+        msg['From'] = formataddr((str(Header(MAIL_NAME, 'utf-8')), SMTP_USER))
+        msg['To'] = formataddr((str(Header(MAIL_NAME, 'utf-8')), MAIL_TO))
 
         with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT) as server:
             server.login(SMTP_USER, SMTP_PASSWORD)
@@ -61,8 +63,10 @@ def send_mail():
 
         return jsonify({'success': True, 'message': '感谢您的留言！我们会尽快与您联系。'}), 200
 
-    except Exception:
-        return jsonify({'success': False, 'message': '提交失败，请稍后重试'}), 500
+    except Exception as e:
+        import traceback
+        print(traceback.format_exc()) # 这行会将具体的报错行数和原因打印到 docker logs
+        return jsonify({'success': False, 'message': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
