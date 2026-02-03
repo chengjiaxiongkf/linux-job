@@ -1,0 +1,24 @@
+version: '3.3'
+services:
+  nginx:
+    # 使用加速源并指定 alpine-fat 版本（fat版本集成了 opm 包管理器，方便安装邮件库）
+    image: docker.1ms.run/openresty/openresty:alpine-fat
+    restart: always
+    container_name: nginx
+    network_mode: host 
+    privileged: true 
+    # 注意：在 network_mode: host 模式下，ports 字段其实是被忽略的，配置仅作参考
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      # 【关键：主配置文件】OpenResty 默认读取 /usr/local/openresty/nginx/conf/nginx.conf
+      - /data/volumes/nginx/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+      # 【关键：HTML目录】如果你的 nginx.conf 里写的是 /etc/nginx/html，这里需要对应挂载
+      - /data/volumes/nginx/html/:/etc/nginx/html/
+      # 【关键：日志目录】
+      - /data/volumes/nginx/logs:/var/log/nginx/
+      # 【关键：子配置目录】确保你的 nginx.conf 里有 include /etc/nginx/conf.d/*.conf;
+      - /data/volumes/nginx/vhost:/etc/nginx/conf.d
+      - /data/volumes/nginx/cert:/etc/nginx/cert
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    environment:
+      - TZ=Asia/Shanghai
