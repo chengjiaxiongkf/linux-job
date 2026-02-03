@@ -22,3 +22,21 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt:ro
     environment:
       - TZ=Asia/Shanghai
+  # 新增的邮件微服务
+  mail-service:
+    build: ./mail_service
+    container_name: mail-service
+    restart: always
+    network_mode: host # 同样使用 host 模式，方便 Nginx 访问 127.0.0.1:5000
+    environment:
+      - TZ=Asia/Shanghai
+  # nginx的配置
+  # location /submit_contact {
+  #       if ($request_method = 'OPTIONS') {
+  #           return 204;
+  #       }
+
+  #       proxy_pass http://127.0.0.1:5000/submit_contact;
+  #       proxy_set_header Host $host;
+  #       proxy_set_header X-Real-IP $remote_addr;
+  #   }
