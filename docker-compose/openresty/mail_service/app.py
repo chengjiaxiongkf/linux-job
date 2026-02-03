@@ -19,8 +19,7 @@ def send_mail():
     SMTP_HOST = 'smtp.qq.com'          # SMTP服务器地址
     SMTP_PORT = 465                    # SMTP端口
     SMTP_USER = '514471552@qq.com'     # 发件邮箱
-    SMTP_PASSWORD = 'xxx' # 邮箱授权码
-    MAIL_TO = '514471552@qq.com'                      # 收件邮箱
+    SMTP_PASSWORD = 'xx' # 邮箱授权码
     MAIL_NAME = 'LUXWEAVE|奢织'                       # 显示名称
     # ==============================
 
@@ -55,7 +54,7 @@ def send_mail():
         msg = MIMEText(content, 'plain', 'utf-8')
         msg['Subject'] = Header(f"官网新留言: {name}", 'utf-8')
         msg['From'] = formataddr((str(Header(MAIL_NAME, 'utf-8')), SMTP_USER))
-        msg['To'] = formataddr((str(Header(MAIL_NAME, 'utf-8')), MAIL_TO))
+        msg['To'] = formataddr((str(Header(MAIL_NAME, 'utf-8')), email))
 
         with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT) as server:
             server.login(SMTP_USER, SMTP_PASSWORD)
