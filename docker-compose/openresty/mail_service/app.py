@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
@@ -7,7 +6,6 @@ from datetime import date
 from collections import defaultdict
 
 app = Flask(__name__)
-CORS(app)
 
 # IP请求记录 {ip: {date: count}}
 ip_request_log = defaultdict(lambda: defaultdict(int))
@@ -20,7 +18,7 @@ def send_mail():
     SMTP_HOST = 'smtp.qq.com'          # SMTP服务器地址
     SMTP_PORT = 465                    # SMTP端口
     SMTP_USER = '514471552@qq.com'     # 发件邮箱
-    SMTP_PASSWORD = 'plgxdecbebyjbifj' # 邮箱授权码
+    SMTP_PASSWORD = 'xxxxx' # 邮箱授权码
     MAIL_TO = 'LUXWEAVE|奢织<514471552@qq.com>'       # 收件邮箱
     # ==============================
 
