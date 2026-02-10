@@ -47,10 +47,10 @@ echo "==== Step 9: 验证安装 ===="
 sudo docker run --rm hello-world
 
 echo "==== Step 10: 安装Docker compose ===="
-apt  install docker-compose
+sudo apt  install docker-compose
 
 echo "==== Step 11: 验证安装Docker compose ===="
-docker-compose version
+sudo docker-compose version
 
 echo "------------------------------------------------"
 echo "✅ Docker & Docker Compose 安装完成！"

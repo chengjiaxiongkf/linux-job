@@ -5,9 +5,7 @@ services:
     image: nginx:alpine
     container_name: nginx
     restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
+    network_mode: host
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
@@ -17,8 +15,6 @@ services:
       - ./data/letsencrypt:/etc/letsencrypt:ro
       - ./html/certbot-challenge:/var/www/certbot:ro
       - ./logs/nginx:/var/log/nginx
-    networks:
-      - web-network
     labels:
       - "auto-renew=true"
 
@@ -26,6 +22,7 @@ services:
     image: certbot/certbot:latest
     container_name: certbot
     restart: unless-stopped
+    network_mode: host
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
@@ -33,15 +30,6 @@ services:
       - ./html/certbot-challenge:/var/www/certbot
       - ./certbot/config:/etc/letsencrypt/renewal
       - ./certbot/logs:/var/log/letsencrypt
-    depends_on:
-      - nginx
-    networks:
-      - web-network
-
-networks:
-  web-network:
-    driver: bridge
-
 volumes:
   letsencrypt-data:
     driver: local
