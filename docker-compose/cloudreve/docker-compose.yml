@@ -2,7 +2,7 @@ version: "3.3"
 services:
   cloudreve:
     container_name: cloudreve
-    image: cloudreve/cloudreve:latest
+    image: cloudreve/cloudreve:3.8.2
     restart: unless-stopped
     networks:
       - vlan-mysql
@@ -19,7 +19,7 @@ services:
       - aria2
   aria2:
     container_name: aria2
-    image: p3terx/aria2-pro
+    image: p3terx/aria2-pro:3.8.2
     restart: unless-stopped
     ports:
       - "7099:7099"
