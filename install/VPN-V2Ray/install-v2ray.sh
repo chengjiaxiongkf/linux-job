@@ -204,14 +204,14 @@ request_certificate() {
     # 确保 webroot 目录存在
     mkdir -p /var/www/html
 
-    # 注册 acme.sh 账户
-    if [ ! -f "$HOME/.acme.sh/account.conf" ]; then
-        ~/.acme.sh/acme.sh --register-account -m "$EMAIL"
-    fi
+    # 注册/更新 acme.sh 账户
+    # 强制注册/更新账户，确保 ZeroSSL 绑定了邮箱
+    log_info "注册/更新 acme.sh 账户..."
+    ~/.acme.sh/acme.sh --register-account -m "$EMAIL" --server zerossl || log_warn "账户注册/更新可能已存在或无需更新，继续尝试申请证书..."
 
     # 申请证书
     log_info "申请域名 $DOMAIN 的证书..."
-    ~/.acme.sh/acme.sh --issue -d "$DOMAIN" --webroot /var/www/html
+    ~/.acme.sh/acme.sh --issue -d "$DOMAIN" --webroot /var/www/html --server zerossl
 
     # 重启 Nginx
     systemctl restart nginx
