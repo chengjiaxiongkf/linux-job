@@ -1,26 +1,34 @@
-mixed-port: 7890
+mixed-port: 7891
 allow-lan: true
 mode: rule
 log-level: info
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
 proxies:
   - name: VLESS
-    type: vless          
-    server: 【xxx.domian.com】
-    port: 443          
-    uuid: 【xxxxxxxxxxxxxxxxxxxxx】 
-    cipher: auto       
-    tls: true       
+    type: vless
+    server: xxxx
+    port: 443
+    uuid: xxxx
+    cipher: auto
+    tls: true
     skip-cert-verify: false 
     network: ws       
     ws-opts:
-      path: "[/your_path]"
+      path: "/your_path"
       headers:
-        Host: 【xxx.domian.com】
+        Host: ss.sampras.vip
 proxy-groups:
   - name: 代理
     type: select
     proxies: [VLESS, DIRECT, REJECT]
 rules:
+  - PROCESS-NAME,Weixin.exe,DIRECT
   - PROCESS-NAME,WechatAppEx.exe,DIRECT
   - PROCESS-NAME,Trae.exe,DIRECT
   - PROCESS-NAME,QQMusic.exe,DIRECT
@@ -29,6 +37,10 @@ rules:
   - PROCESS-NAME,Powershell.exe,DIRECT
   - PROCESS-NAME,Hearthstone.exe,DIRECT
   - PROCESS-NAME,SGSmartAssistant.exe,DIRECT
+  - PROCESS-NAME,Battle.net.exe,DIRECT
+  - PROCESS-NAME,Trae CN.exe,DIRECT
+  - PROCESS-NAME,HSAExternal.exe,DIRECT
+  - PROCESS-NAME,DingTalk.exe,DIRECT
   - DOMAIN-SUFFIX,rustdesk.com,DIRECT
   - DOMAIN-SUFFIX,aliyun.com,DIRECT
   - DOMAIN-SUFFIX,aliyuncs.com,DIRECT
@@ -48,4 +60,19 @@ rules:
   - DOMAIN-SUFFIX,baidu.com,DIRECT
   - DOMAIN-SUFFIX,yingdao.com,DIRECT
   - DOMAIN-SUFFIX,douyin.com,DIRECT
+  - DOMAIN-SUFFIX,zijieapi.com,DIRECT
+  - DOMAIN-SUFFIX,bytedanceapi.com,DIRECT
+  - DOMAIN-SUFFIX,tianyancha.com,DIRECT
+  - DOMAIN-SUFFIX,pokepay.cc,DIRECT
+  - DOMAIN-SUFFIX,dingtalk.com,DIRECT
+  - DOMAIN-SUFFIX,aliapp.org,DIRECT
+  - DOMAIN-SUFFIX,alicdn.com,DIRECT
+  - DOMAIN-SUFFIX,szgas.com,DIRECT
+  - DOMAIN-SUFFIX,szgas.com.cn,DIRECT
+  - DOMAIN-SUFFIX,volcengine.com,DIRECT
+  - DOMAIN-SUFFIX,volces.com,DIRECT
+  - GEOIP,CN,DIRECT
+  - IP-CIDR,8.138.117.125/32,DIRECT
+  - IP-CIDR,43.138.199.35/32,DIRECT
+  - IP-CIDR,120.79.208.113/32,DIRECT
   - MATCH,代理
