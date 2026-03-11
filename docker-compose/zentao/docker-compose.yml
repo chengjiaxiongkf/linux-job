@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  zentao:
+    image: idoop/zentao:latest
+    container_name: zentao
+    restart: always
+    ports:
+      - "8080:80"      # 访问端口，可自定义
+     # - "3306:3306"    # MySQL 端口（可选，如需外部访问）
+    environment:
+      - ZT_MYSQL_HOST=mysql
+      - ZT_MYSQL_PORT=3306
+      - ZT_MYSQL_USER=root
+      - ZT_MYSQL_PASSWORD=zentao123    # 修改为您自己的密码
+      - ZT_MYSQL_DB=zentao
+    volumes:
+      - /data/volumes/zentao/data:/opt/zbox/data
+      - /data/volumes/zentao/config:/opt/zbox/config
+    depends_on:
+      - mysql
+    networks:
+      - nginxcertbot_web-network      # 加入您的 Nginx 网络
+      - zentao-network
+
+  mysql:
+    image: mysql:5.7
+    container_name: zentao-mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=zentao123    # 与上方 ZT_MYSQL_PASSWORD 保持一致
+      - MYSQL_DATABASE=zentao
+    volumes:
+      - /data/volumes/zentao/mysql:/var/lib/mysql
+    networks:
+      - zentao-network
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+networks:
+  nginxcertbot_web-network:
+    external: true        # 使用已存在的外部网络
+  zentao-network:
+    driver: bridge
