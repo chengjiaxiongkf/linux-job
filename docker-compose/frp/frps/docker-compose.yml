@@ -8,4 +8,5 @@ services:
     privileged: true #容器内root等同于宿主机root
     volumes:
       - /data/volumes/frps/frps.ini:/etc/frp/frps.ini
+      - /data/volumes/frps/frps.toml:/etc/frp/frps.toml
       - /etc/localtime:/etc/localtime:ro

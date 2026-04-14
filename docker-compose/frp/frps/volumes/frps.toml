@@ -1,0 +1,14 @@
+bindPort = 7000
+
+# FRP 身份验证
+auth.token = "xxx"
+
+# 日志配置
+log.level = "info"
+log.maxDays = 999
+
+# Dashboard 配置
+webServer.addr = "0.0.0.0"
+webServer.port = 7654
+webServer.user = "xxx"
+webServer.password = "xxx"
