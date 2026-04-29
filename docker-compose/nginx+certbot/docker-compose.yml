@@ -20,9 +20,9 @@ services:
 
   certbot:
     image: certbot/certbot:latest
-    container_name: certbot
-    restart: unless-stopped
+    # certbot 是一次性任务容器，不要设 container_name 和 restart
     network_mode: host
+    profiles: ["tools"]   # 仅在 docker compose run 时启动，不会被 docker compose up 拉起
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
