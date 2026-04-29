@@ -8,8 +8,10 @@ cd "$(dirname "$0")/.." || { echo "$(date): 无法进入项目目录" >&2; exit 
 
 echo "===== $(date): 开始证书续期 ====="
 
-# 续期所有证书（去掉 --quiet 方便排查；如果稳定后想静默可加回）
-docker compose run --rm certbot renew
+# 续期所有证书
+# -T: 关闭伪终端分配，cron 等无 TTY 环境必须加，否则可能卡住
+# --no-random-sleep-on-renew: 跳过 certbot 默认的最长 8 分钟随机延迟
+docker compose run --rm -T certbot renew --no-random-sleep-on-renew
 RENEW_RC=$?
 
 if [ $RENEW_RC -eq 0 ]; then

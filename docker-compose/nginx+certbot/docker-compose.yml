@@ -7,6 +7,9 @@ services:
     restart: unless-stopped
     ports:
       - 80:80
+      - 443:443
+    networks:
+      - web-network
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
@@ -38,3 +41,7 @@ volumes:
       type: none
       device: ./data/letsencrypt
       o: bind
+networks:
+    web-network:
+      driver: bridge
+      name: nginxcertbot_web-network
