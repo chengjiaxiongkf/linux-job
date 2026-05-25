@@ -43,14 +43,26 @@ sudo systemctl enable --now docker
 echo "==== Step 8: 将当前用户加入 docker 组（免 sudo） ===="
 sudo usermod -aG docker "$USER"
 
+echo "==== Step 8.5: 配置国内镜像加速器（避免无法连接 Docker Hub） ===="
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json > /dev/null <<'EOF'
+{
+  "registry-mirrors": [
+    "https://docker.1ms.run",
+    "https://docker.m.daocloud.io",
+    "https://docker.1panel.live",
+    "https://hub.rat.dev"
+  ]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
 echo "==== Step 9: 验证安装 ===="
-sudo docker run --rm hello-world
+sudo docker run --rm hello-world || echo "⚠️  hello-world 拉取失败，请检查镜像加速器是否可用，但 Docker 已安装成功"
 
-echo "==== Step 10: 安装Docker compose ===="
-sudo apt  install docker-compose
-
-echo "==== Step 11: 验证安装Docker compose ===="
-sudo docker-compose version
+echo "==== Step 10: 验证 Docker Compose（已随 docker-compose-plugin 安装，v2 用法） ===="
+docker compose version
 
 echo "------------------------------------------------"
 echo "✅ Docker & Docker Compose 安装完成！"
