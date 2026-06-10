@@ -23,7 +23,7 @@ services:
       - "auto-renew=true"
 
   certbot:
-    image: certbot/certbot:latest
+    image: certbot/certbot:3.14.4
     # certbot 是一次性任务容器，不要设 container_name 和 restart
     network_mode: host
     profiles: ["tools"]   # 仅在 docker compose run 时启动，不会被 docker compose up 拉起
