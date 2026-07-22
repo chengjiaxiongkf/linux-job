@@ -49,9 +49,7 @@ sudo tee /etc/docker/daemon.json > /dev/null <<'EOF'
 {
   "registry-mirrors": [
     "https://docker.1ms.run",
-    "https://docker.m.daocloud.io",
-    "https://docker.1panel.live",
-    "https://hub.rat.dev"
+    "https://docker.m.daocloud.io"
   ]
 }
 EOF
