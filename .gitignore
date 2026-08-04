@@ -27,3 +27,6 @@ hs_err_pid*
 .idea/
 .DS_Store
 .vscode/
+
+# 容器挂载的持久化数据（桌面配置、v2rayN、缓存等）
+docker-compose/ubuntu-xrdp/data/
