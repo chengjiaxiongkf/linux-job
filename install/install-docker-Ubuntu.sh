@@ -19,19 +19,19 @@ sudo apt-get install -y \
   gnupg \
   lsb-release
 
-echo "==== Step 4: 添加 Docker 官方 GPG 密钥 ===="
+# Step 4: 添加 Docker 官方 GPG 密钥（使用阿里云镜像）
 sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | \
   sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
-echo "==== Step 5: 设置仓库 ===="
+# Step 5: 设置仓库（使用阿里云镜像）
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
-  https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | \
+  https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-echo "==== Step 6: 安装 Docker Engine、CLI、containerd、Compose 插件 ===="
+# Step 6: 更新并安装 Docker（不变）
 sudo apt-get update -y
 sudo apt-get install -y \
   docker-ce docker-ce-cli containerd.io \

@@ -29,7 +29,7 @@ echo -e "${YELLOW}[2/5] 创建Nginx配置...${NC}"
 cat > "nginx/conf.d/${PRIMARY_DOMAIN}.conf" << EOF
 # HTTPS配置 - 申请证书后取消注释
 # server {
-#     listen 443 ssl http2;
+#     listen 443 ssl;
 #     server_name ${DOMAINS};
 #     # SSL 证书路径
 #     ssl_certificate ${LETSENCRYPT_DIR}/live/${PRIMARY_DOMAIN}/fullchain.pem;
