@@ -2,6 +2,7 @@ services:
   vpn1:
     image: linuxserver/webtop:ubuntu-xfce
     container_name: vpn-env-1
+    privileged: true
     restart: always
     ports:
       - "13389:3000"        # WebTop 默认使用 Web 界面 (端口3000)
