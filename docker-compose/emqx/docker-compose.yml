@@ -1,18 +1,20 @@
 version: '3.8'
+
 services:
   emqx:
     image: emqx/emqx:5.8.4
     container_name: emqx
-    hostname: emqx-node
+    hostname: emqx.local
+    user: root                          # 关键：以 root 运行，避免权限问题
     restart: unless-stopped
     ports:
-      - "1883:1883"      # MQTT TCP
-      - "8083:8083"      # MQTT over WebSocket
-      - "8084:8084"      # MQTT over WebSocket SSL
-      - "8883:8883"      # MQTT SSL
+      - "21883:1883"      # MQTT TCP
+      - "28083:8083"      # MQTT over WebSocket
+      - "28084:8084"      # MQTT over WebSocket SSL
+      - "28883:8883"      # MQTT SSL
       - "18083:18083"    # Dashboard
     environment:
-      - EMQX_NODE_NAME=emqx@emqx-node
+      - EMQX_NODE_NAME=emqx@emqx.local
       - EMQX_DASHBOARD__DEFAULT_PASSWORD=your_strong_password
     volumes:
       - ./emqx/data:/opt/emqx/data
