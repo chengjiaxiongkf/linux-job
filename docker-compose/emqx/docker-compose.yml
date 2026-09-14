@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  emqx:
+    image: emqx/emqx:5.8.4
+    container_name: emqx
+    hostname: emqx-node
+    restart: unless-stopped
+    ports:
+      - "1883:1883"      # MQTT TCP
+      - "8083:8083"      # MQTT over WebSocket
+      - "8084:8084"      # MQTT over WebSocket SSL
+      - "8883:8883"      # MQTT SSL
+      - "18083:18083"    # Dashboard
+    environment:
+      - EMQX_NODE_NAME=emqx@emqx-node
+      - EMQX_DASHBOARD__DEFAULT_PASSWORD=your_strong_password
+    volumes:
+      - ./emqx/data:/opt/emqx/data
+      - ./emqx/log:/opt/emqx/log
+    healthcheck:
+      test: ["CMD", "/opt/emqx/bin/emqx", "ctl", "status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - emqx-net
+
+networks:
+  emqx-net:
+    driver: bridge
